@@ -2,12 +2,12 @@
 
 import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
-import type { AppDispatch, RootState } from "../app/store";
+import type { AppDispatch, RootState } from "../../app/store";
 import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-} from "../features/cart/cartSlice";
+} from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
 
 export default function Cart() {

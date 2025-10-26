@@ -2,9 +2,9 @@
 
 import "./ProductDetail.css";
 import { useParams } from "react-router-dom";
-import { mockProducts } from "../data/products";
+import { mockProducts } from "../../data/products";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cart/cartSlice";
+import { addToCart } from "../../features/cart/cartSlice";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();

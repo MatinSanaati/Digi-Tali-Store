@@ -2,8 +2,8 @@
 
 import "./ProductList.css";
 import { useState } from "react";
-import { mockProducts } from "../data/products";
-import ProductCard from "../components/ProductCard";
+import { mockProducts } from "../../data/products";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 export default function ProductList() {
   const [searchTerm, setSearchTerm] = useState("");

@@ -3,9 +3,9 @@
 import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import type { RootState } from "../app/store";
-import ThemeToggle from "./ThemeToggle";
-import Navbar from "./Navbar";
+import type { RootState } from "../../app/store";
+import ThemeToggle from "./Theme-Toggle/ThemeToggle";
+import Navbar from "./Navbar/Navbar";
 
 export default function Header() {
   const location = useLocation();

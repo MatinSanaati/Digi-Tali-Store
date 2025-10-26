@@ -1,0 +1,12 @@
+/* src/pages/Home.css */
+.home-page {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-bg);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .home-page {
+    padding: var(--space-lg) 0;
+  }
+}

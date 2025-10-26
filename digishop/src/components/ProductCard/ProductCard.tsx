@@ -2,8 +2,8 @@
 
 import "./ProductCard.css";
 import { useDispatch } from "react-redux";
-import type { Product } from "../data/products";
-import { addToCart } from "../features/cart/cartSlice";
+import type { Product } from "../../data/products";
+import { addToCart } from "../../features/cart/cartSlice";
 
 interface ProductCardProps {
   product: Product;

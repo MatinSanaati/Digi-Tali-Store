@@ -1,14 +1,14 @@
 // src/App.tsx
 
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import ProductList from "./pages/ProductList";
-import ProductDetail from "./pages/ProductDetail";
-import Cart from "./pages/Cart";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import ProductList from "./pages/ProductList/ProductList";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import Cart from "./pages/Cart/Cart";
+import About from "./pages/About/About";
+import Blog from "./pages/Blog/Blog";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   return (
