@@ -1,18 +1,56 @@
 /* src/components/Navbar.css */
 
-.navbar {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-md);
-}
-
 .navbar__list {
   display: flex;
-  gap: var(--space-md);
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
 }
 
 .navbar__item {
-  padding: var(--space-sm) var(--space-md);
+  text-decoration: none;
+  color: var(--color-text-light);
   white-space: nowrap;
+  position: relative;
+  padding: var(--space-sm) 0;
+  transition: color 0.3s ease;
+}
+
+/* خط زیر لینک (هاور + اکتیو) */
+.navbar__item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* هاور */
+.navbar__item:hover {
+  color: var(--color-primary);
+}
+
+.navbar__item:hover::after {
+  width: 100%;
+}
+
+/* حالت اکتیو (وقتی صفحه انتخاب شده) */
+.navbar__item--active {
+  color: var(--color-primary);
+}
+
+.navbar__item--active::after {
+  width: 100%;
+  background-color: var(--color-primary);
+}
+
+/* حالت اکتیو در تم دارک */
+[data-theme="dark"] .navbar__item--active::after,
+[data-theme="dark"] .navbar__item:hover::after {
+  background-color: var(--color-primary);
 }

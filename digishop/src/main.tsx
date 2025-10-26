@@ -10,6 +10,11 @@ import "./styles/responsive.css";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 
+const sevedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+if (sevedTheme) {
+  document.documentElement.setAttribute('data-theme' , sevedTheme);
+}
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>

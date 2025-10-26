@@ -4,14 +4,12 @@ import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
-import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
       <Header />
       <div className="container">
-        <Navbar />
         <main style={{ padding: "20px" }}>
           <Routes>
             <Route path="/" element={<Home />} />

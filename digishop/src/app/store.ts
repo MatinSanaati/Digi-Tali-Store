@@ -4,11 +4,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // استفاده از localStorage
 import cartReducer from "../features/cart/cartSlice";
+import themeReducer from "../features/theme/themeSlice"; // ✅ اضافه شد
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart"], // فقط سبد خرید ذخیره بشه
+  whitelist: ["cart", "theme"], // فقط سبد خرید ذخیره بشه
 };
 
 const persistedReducer = persistReducer(persistConfig, cartReducer);
@@ -16,6 +17,7 @@ const persistedReducer = persistReducer(persistConfig, cartReducer);
 export const store = configureStore({
   reducer: {
     cart: persistedReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

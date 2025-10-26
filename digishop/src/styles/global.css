@@ -55,6 +55,16 @@ body {
   --shadow-lg: 0 10px 15px var(--color-shadow);
 }
 
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-bg: #1a202c;
+  --color-bg-card: #2d3748;
+  --color-text: #f8fafc;
+  --color-text-light: #a0aec0;
+  --color-border: #4a5568;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+}
+
 /* =============== Reusable Classes =============== */
 .container {
   width: 100%;
@@ -118,15 +128,6 @@ h2 {
 }
 h3 {
   font-size: 1.25rem;
-}
-
-a {
-  text-decoration: none;
-  color: var(--color-primary);
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 /* =============== Vazirmatn Font (for Persian) =============== */

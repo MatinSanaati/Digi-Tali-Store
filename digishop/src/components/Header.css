@@ -1,9 +1,9 @@
 /* src/components/Header.css */
 
 .header {
+  padding: var(--space-md);
   background-color: var(--color-bg-card);
   box-shadow: var(--shadow-sm);
-  padding: var(--space-md) 0;
 }
 
 .header .container {

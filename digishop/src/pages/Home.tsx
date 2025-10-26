@@ -29,6 +29,9 @@ export default function Home() {
           <Link to="/products?category=tablet" className="home-category card">
             <h3>تبلت</h3>
           </Link>
+          <Link to="/products?category=Monitor" className="home-category card">
+            <h3>مانیتور</h3>
+          </Link>
           <Link
             to="/products?category=accessory"
             className="home-category card"
