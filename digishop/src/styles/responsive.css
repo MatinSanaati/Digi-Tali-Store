@@ -1,0 +1,44 @@
+/* src/styles/responsive.css */
+
+/* Mobile: 0px - 767px */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .flex-col-mobile {
+    flex-direction: column !important;
+    gap: var(--space-lg) !important;
+  }
+
+  .text-center-mobile {
+    text-align: center !important;
+  }
+
+  .gap-sm-mobile {
+    gap: var(--space-sm) !important;
+  }
+
+  .full-width-mobile {
+    width: 100% !important;
+  }
+}
+
+/* Tablet: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  /* عموماً نیازی به تغییر نیست — چون mobile-first هست */
+}

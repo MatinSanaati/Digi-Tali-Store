@@ -1,0 +1,59 @@
+/* src/pages/Home.css */
+
+.home-page {
+  padding: var(--space-xl) 0;
+}
+
+/* Hero */
+.hero {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.hero__btn {
+  color: white;
+  border-color: white;
+}
+
+/* Categories */
+.home-categories {
+  margin-bottom: var(--space-2xl);
+}
+
+.home-categories__list {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.home-category {
+  width: 150px;
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.home-category h3 {
+  margin: 0;
+}
+
+/* Featured */
+.home-featured__grid {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}

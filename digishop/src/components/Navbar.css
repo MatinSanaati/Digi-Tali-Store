@@ -1,0 +1,18 @@
+/* src/components/Navbar.css */
+
+.navbar {
+  margin-bottom: var(--space-xl);
+  padding: var(--space-md);
+}
+
+.navbar__list {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.navbar__item {
+  padding: var(--space-sm) var(--space-md);
+  white-space: nowrap;
+}
