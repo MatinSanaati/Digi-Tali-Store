@@ -1,0 +1,33 @@
+.blog-page {
+  padding: var(--space-2xl) 0;
+}
+
+.blog-page h1 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.blog-page__intro {
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-xl);
+}
+
+.blog-post {
+  padding: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.blog-post h2 {
+  margin-bottom: var(--space-md);
+}
+
+.blog-post p {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-sm);
+}
+
+.blog-post time {
+  color: var(--color-primary);
+  font-weight: 600;
+}

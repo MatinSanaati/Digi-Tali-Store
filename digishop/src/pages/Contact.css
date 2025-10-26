@@ -1,0 +1,15 @@
+.contact-page {
+  padding: var(--space-2xl) 0;
+}
+
+.contact-page h1 {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.contact-info {
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 2;
+  color: var(--color-text-light);
+}

@@ -2,22 +2,23 @@
 
 .navbar__list {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: var(--space-lg);
   flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar__item {
   text-decoration: none;
   color: var(--color-text-light);
-  white-space: nowrap;
-  position: relative;
   padding: var(--space-sm) 0;
+  position: relative;
   transition: color 0.3s ease;
 }
 
-/* خط زیر لینک (هاور + اکتیو) */
 .navbar__item::after {
   content: "";
   position: absolute;
@@ -30,27 +31,12 @@
   transform: translateX(-50%);
 }
 
-/* هاور */
-.navbar__item:hover {
-  color: var(--color-primary);
-}
-
-.navbar__item:hover::after {
-  width: 100%;
-}
-
-/* حالت اکتیو (وقتی صفحه انتخاب شده) */
+.navbar__item:hover,
 .navbar__item--active {
   color: var(--color-primary);
 }
 
+.navbar__item:hover::after,
 .navbar__item--active::after {
   width: 100%;
-  background-color: var(--color-primary);
-}
-
-/* حالت اکتیو در تم دارک */
-[data-theme="dark"] .navbar__item--active::after,
-[data-theme="dark"] .navbar__item:hover::after {
-  background-color: var(--color-primary);
 }

@@ -1,7 +1,5 @@
-/* src/components/Header.css */
-
 .header {
-  padding: var(--space-md);
+  padding: var(--space-md) 0;
   background-color: var(--color-bg-card);
   box-shadow: var(--shadow-sm);
 }
@@ -10,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-lg);
 }
 
 .header__logo {
@@ -17,14 +16,54 @@
   font-weight: bold;
   color: var(--color-text);
   text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* وقتی در صفحه‌ی اصلی هستیم */
+.header__logo--active {
+  color: var(--color-primary);
+}
+
+.header__main {
+  flex: 1;
+  padding: 0 var(--space-lg);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .header__cart-link {
   color: var(--color-primary);
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.header__cart-link:hover {
-  text-decoration: underline;
+@media (max-width: 767px) {
+  .header .container {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .header__main,
+  .header__actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header__actions {
+    flex-direction: row;
+  }
 }

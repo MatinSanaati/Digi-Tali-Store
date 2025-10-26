@@ -8,9 +8,16 @@ import { mockProducts } from "../data/products";
 export default function Home() {
   const featuredProducts = mockProducts.slice(0, 4);
 
+  // دسته‌بندی‌های محصول برای نمایش در Home
+  const categories = [
+    { id: "mobile", name: "موبایل", icon: "📱" },
+    { id: "tablet", name: "تبلت", icon: "💻" },
+    { id: "accessory", name: "لوازم جانبی", icon: "🔌" },
+  ];
+
   return (
     <div className="home-page container">
-      {/* Hero Banner */}
+      {/* Hero */}
       <section className="hero">
         <h1>به DigiTali خوش آمدید!</h1>
         <p>بهترین کالاهای دیجیتال با تضمین اصالت و قیمت مناسب</p>
@@ -19,31 +26,31 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Categories */}
+      {/* دسته‌بندی‌ها در Home */}
       <section className="home-categories">
-        <h2>دسته‌بندی‌ها</h2>
-        <div className="home-categories__list">
-          <Link to="/products?category=mobile" className="home-category card">
-            <h3>موبایل</h3>
-          </Link>
-          <Link to="/products?category=tablet" className="home-category card">
-            <h3>تبلت</h3>
-          </Link>
-          <Link to="/products?category=Monitor" className="home-category card">
-            <h3>مانیتور</h3>
-          </Link>
-          <Link
-            to="/products?category=accessory"
-            className="home-category card"
-          >
-            <h3>لوازم جانبی</h3>
-          </Link>
+        <h2>دسته‌بندی‌ محصولات</h2>
+        <div className="home-categories__grid">
+          {categories.map((cat) => (
+            <Link
+              key={cat.id}
+              to={`/products?category=${cat.id}`}
+              className="home-category card"
+            >
+              <span className="home-category__icon">{cat.icon}</span>
+              <h3 className="home-category__title">{cat.name}</h3>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* Featured Products */}
+      {/* محصولات پیشنهادی */}
       <section className="home-featured">
-        <h2>محصولات پیشنهادی</h2>
+        <div className="home-featured__header">
+          <h2>محصولات پیشنهادی</h2>
+          <Link to="/products" className="home-featured__view-all">
+            مشاهده همه
+          </Link>
+        </div>
         <div className="home-featured__grid">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />

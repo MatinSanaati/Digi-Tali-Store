@@ -35,7 +35,7 @@ export default function Cart() {
     return (
       <div className="cart-empty container">
         <h2>سبد خرید شما خالی است</h2>
-        <Link to="/products" className="cart-empty__link">
+        <Link to="/" className="cart-empty__link">
           برگردیم به فروشگاه
         </Link>
       </div>
