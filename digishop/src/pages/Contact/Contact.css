@@ -1,15 +1,193 @@
+/* src/pages/Contact.css */
 .contact-page {
   padding: var(--space-2xl) 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 2.7rem
 }
 
 .contact-page h1 {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  font-size: 2.5rem;
 }
 
-.contact-info {
+.contact-page__intro {
   text-align: center;
-  font-size: 1.125rem;
-  line-height: 2;
   color: var(--color-text-light);
+  margin-bottom: var(--space-xl);
+  font-size: 1.25rem;
+}
+
+.contact-info,
+.contact-form,
+.contact-map,
+.contact-social {
+  padding: var(--space-lg);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-xl);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info:hover,
+.contact-form:hover,
+.contact-map:hover,
+.contact-social:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-info__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  text-align: center;
+}
+
+.contact-info__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+}
+
+.contact-info__icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-info__item:hover .contact-info__icon {
+  transform: scale(1.2);
+}
+
+.contact-info__link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-info__link:hover {
+  color: var(--color-primary-dark);
+}
+
+.contact-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form__form label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.contact-form__textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.contact-map__image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+/* برای iframe گوگل مپ (در صورت استفاده) */
+.contact-map__iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: var(--radius-sm);
+}
+
+.contact-social__list {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-social__item {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.contact-social__icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-social__item:hover .contact-social__icon {
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .contact-page h1 {
+    font-size: 2rem;
+  }
+
+  .contact-page__intro {
+    font-size: 1rem;
+  }
+
+  .contact-info,
+  .contact-form,
+  .contact-map,
+  .contact-social {
+    padding: var(--space-md);
+  }
+
+  .contact-info__item {
+    font-size: 1rem;
+  }
+
+  .contact-info__icon,
+  .contact-social__icon {
+    font-size: 1.25rem;
+  }
+
+  .contact-form__form {
+    max-width: 100%;
+  }
+
+  .contact-map__image,
+  .contact-map__iframe {
+    max-height: 200px;
+  }
+
+  .contact-social__list {
+    flex-direction: column;
+    align-items: center;
+  }
 }

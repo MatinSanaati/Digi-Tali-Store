@@ -22,7 +22,7 @@ export default function ProductList() {
   const categories = ["mobile", "tablet", "accessory"] as const;
 
   return (
-    <div className="product-list-page container">
+    <div className="product-list-page">
       <h2>فروشگاه کالای دیجیتال</h2>
 
       {/* جستجو */}

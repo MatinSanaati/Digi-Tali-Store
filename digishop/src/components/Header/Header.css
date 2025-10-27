@@ -1,4 +1,9 @@
 .header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;
   padding: var(--space-md) 0;
   background-color: var(--color-bg-card);
   box-shadow: var(--shadow-sm);
@@ -53,17 +58,20 @@
 
 @media (max-width: 767px) {
   .header .container {
-    flex-direction: column;
     gap: var(--space-md);
   }
 
-  .header__main,
+  .header__logo,
   .header__actions {
     width: 100%;
-    justify-content: center;
+    text-align: center;
+  }
+
+  .header__main {
+    display: none !important;
   }
 
   .header__actions {
-    flex-direction: row;
+    justify-content: center;
   }
 }

@@ -1,7 +1,6 @@
 // src/pages/Cart.tsx
-
-import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
+import { motion, type Variants } from "framer-motion";
 import type { AppDispatch, RootState } from "../../app/store";
 import {
   removeFromCart,
@@ -9,10 +8,30 @@ import {
   decreaseQuantity,
 } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
+import "./Cart.css";
 
 export default function Cart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch<AppDispatch>();
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
 
   const handleRemove = (id: number) => {
     dispatch(removeFromCart(id));
@@ -33,22 +52,41 @@ export default function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="cart-empty container">
-        <h2>سبد خرید شما خالی است</h2>
-        <Link to="/" className="cart-empty__link">
-          برگردیم به فروشگاه
-        </Link>
-      </div>
+      <motion.div
+        className="cart-empty"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 variants={itemVariants}>سبد خرید شما خالی است</motion.h2>
+        <motion.div variants={itemVariants}>
+          <Link to="/" className="cart-empty__link">
+            برگردیم به فروشگاه
+          </Link>
+        </motion.div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="cart-page container">
-      <h2>سبد خرید ({cartItems.length} کالا)</h2>
+    <motion.div
+      className="cart-page"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.h2 variants={itemVariants}>
+        سبد خرید ({cartItems.length} کالا)
+      </motion.h2>
 
-      <div className="cart-items">
+      <motion.div className="cart-items" variants={containerVariants}>
         {cartItems.map((item) => (
-          <div key={item.id} className="cart-item card">
+          <motion.div
+            key={item.id}
+            className="cart-item card"
+            variants={itemVariants}
+            whileHover={{ scale: 1.03, boxShadow: "var(--shadow-md)" }}
+          >
             <img
               src={item.image}
               alt={item.name}
@@ -62,38 +100,61 @@ export default function Cart() {
             </div>
 
             <div className="cart-item__quantity">
-              <button
+              <motion.button
                 onClick={() => handleDecrease(item.id)}
                 disabled={item.quantity <= 1}
                 className="cart-item__quantity-btn cart-item__quantity-btn--minus"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
                 -
-              </button>
+              </motion.button>
               <span className="cart-item__quantity-value">{item.quantity}</span>
-              <button
+              <motion.button
                 onClick={() => handleIncrease(item.id)}
                 className="cart-item__quantity-btn cart-item__quantity-btn--plus"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
                 +
-              </button>
+              </motion.button>
             </div>
 
-            <button
+            <motion.button
               onClick={() => handleRemove(item.id)}
               className="btn btn-secondary cart-item__remove-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               حذف
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="cart-summary">
-        <h3>جمع کل: {totalPrice.toLocaleString()} تومان</h3>
-        <button className="btn btn-success cart-summary__checkout-btn">
-          ثبت سفارش
-        </button>
-      </div>
-    </div>
+      <motion.div className="cart-summary card" variants={itemVariants}>
+        <div className="cart-summary__discount">
+          <input
+            type="text"
+            placeholder="کد تخفیف"
+            className="cart-summary__discount-input"
+          />
+          <button className="btn btn-outline">اعمال کد</button>
+        </div>
+        <div className="cart-summary__details">
+          <p>جمع محصولات: {totalPrice.toLocaleString()} تومان</p>
+          <p>هزینه ارسال: رایگان (placeholder)</p>
+          <h3>جمع کل: {totalPrice.toLocaleString()} تومان</h3>
+        </div>
+        <div className="cart-summary__actions">
+          <Link to="/" className="btn btn-outline">
+            ادامه خرید
+          </Link>
+          <button className="btn btn-primary cart-summary__checkout-btn">
+            ثبت سفارش
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }

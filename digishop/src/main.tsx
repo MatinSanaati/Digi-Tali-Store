@@ -1,5 +1,4 @@
 // src/main.tsx
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -12,7 +11,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 const sevedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
 if (sevedTheme) {
-  document.documentElement.setAttribute('data-theme' , sevedTheme);
+  document.documentElement.setAttribute("data-theme", sevedTheme);
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

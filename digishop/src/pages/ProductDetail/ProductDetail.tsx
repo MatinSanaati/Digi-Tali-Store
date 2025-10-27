@@ -1,5 +1,4 @@
 // src/pages/ProductDetail.tsx
-
 import "./ProductDetail.css";
 import { useParams } from "react-router-dom";
 import { mockProducts } from "../../data/products";
@@ -15,14 +14,22 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="container" style={{ padding: "2rem" }}>
+      <div className="container" style={{ marginTop: "var(--header-offset)" }}>
         <p className="product-detail__not-found">محصولی یافت نشد!</p>
       </div>
     );
   }
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1, // اضافه کردن quantity
+      })
+    );
   };
 
   const categoryName =
@@ -30,7 +37,19 @@ export default function ProductDetail() {
       ? "موبایل"
       : product.category === "tablet"
       ? "تبلت"
-      : "لوازم جانبی";
+      : product.category === "accessory"
+      ? "لوازم جانبی"
+      : product.category === "laptop"
+      ? "لپ‌تاپ"
+      : product.category === "headphone"
+      ? "هدفون"
+      : product.category === "monitor"
+      ? "مانیتور"
+      : product.category === "smartwatch"
+      ? "ساعت هوشمند"
+      : product.category === "computer_parts"
+      ? "قطعات کامپیوتر"
+      : "قلم دیجیتال";
 
   return (
     <div className="product-detail-page container">

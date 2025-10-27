@@ -1,11 +1,11 @@
-// src/components/Header.tsx
-
+// src/components/Header/Header.tsx
 import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../app/store";
 import ThemeToggle from "./Theme-Toggle/ThemeToggle";
 import Navbar from "./Navbar/Navbar";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 export default function Header() {
   const location = useLocation();
@@ -17,6 +17,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container">
+        <MobileMenu />
         <Link
           to="/"
           className={`header__logo ${isHome ? "header__logo--active" : ""}`}

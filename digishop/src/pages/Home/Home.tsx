@@ -2,8 +2,8 @@
 import "./Home.css";
 import AutoSlider from "../../components/AutoSlider/AutoSlider";
 import CategoriesSection from "../../components/CategoriesSection/CategoriesSection";
-import FeaturedProductsSection from "../../components/ProductsSection/ProductsSection";
 import { mockProducts } from "../../data/products";
+import FeaturedProductsSection from "../../components/ProductsSection/ProductsSection";
 
 export default function Home() {
   const featuredProducts = mockProducts.slice(0, 4);
@@ -12,6 +12,8 @@ export default function Home() {
     { id: "mobile", name: "موبایل", icon: "📱" },
     { id: "tablet", name: "تبلت", icon: "💻" },
     { id: "accessory", name: "لوازم جانبی", icon: "🔌" },
+    { id: "laptop", name: "لپ‌تاپ", icon: "💻" },
+    { id: "headphone", name: "هدفون", icon: "🎧" },
   ];
 
   return (

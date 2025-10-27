@@ -2,6 +2,7 @@
 .featured-products-section {
   margin-top: var(--space-2xl);
   text-align: center;
+  padding: var(--space-md) 0;
 }
 
 .featured-products__header {
@@ -25,17 +26,35 @@
   transform: translateX(-4px);
 }
 
+.featured-products__scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch; /* اسکرول نرم در iOS */
+  scrollbar-width: none; /* مخفی کردن اسکرول‌بار در فایرفاکس */
+  user-select: none; /* غیرفعال کردن انتخاب متن */
+  padding-bottom: var(--space-md);
+}
+
+.featured-products__scroll-container::-webkit-scrollbar {
+  display: none; /* مخفی کردن اسکرول‌بار در کروم و سافاری */
+}
+
 .featured-products__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: inline-flex;
   gap: var(--space-lg);
-  padding: var(--space-md);
+  padding: 0 var(--space-md);
+}
+
+.product-card-wrapper {
+  flex: 0 0 auto;
+  width: 280px; /* عرض ثابت برای هر کارت */
 }
 
 /* Responsive */
 @media (max-width: 767px) {
-  .featured-products__grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .product-card-wrapper {
+    width: 220px;
   }
 
   .featured-products__header {

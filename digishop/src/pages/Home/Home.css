@@ -2,6 +2,7 @@
 .home-page {
   padding: var(--space-xl) 0;
   background-color: var(--color-bg);
+  margin-top: 2.7rem;
 }
 
 /* Responsive */
