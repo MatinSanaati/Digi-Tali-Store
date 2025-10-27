@@ -78,10 +78,6 @@
   background: var(--color-bg-hover);
 }
 
-.mobile-menu__icon {
-  font-size: 1.5rem;
-}
-
 .mobile-menu__label {
   font-size: 1rem;
 }
