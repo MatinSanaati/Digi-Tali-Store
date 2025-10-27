@@ -5,6 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Vazirmatn", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -36,6 +37,8 @@ body {
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-overlay: rgba(0, 0, 0, 0.7);
   --color-hover: #edf2f7;
+  --bg-click--filter: rgba(86, 186, 253, 0.164);
+  --color-click--filter: rgba(51, 51, 51, 0.74);
 
   /* Spacing */
   --space-xs: 4px;
@@ -71,6 +74,8 @@ body {
   --color-accent: #b794f4;
   --color-overlay: rgba(0, 0, 0, 0.8);
   --color-hover: #4a5568;
+  --bg-click--filter: rgba(131, 205, 255, 0.164);
+  --color-click--filter: rgba(255, 255, 255, 0.836);
 }
 
 /* =============== Reusable Classes =============== */

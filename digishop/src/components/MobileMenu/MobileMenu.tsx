@@ -11,12 +11,11 @@ export default function MobileMenu() {
     setIsOpen(!isOpen);
   };
 
-  // مدیریت اسکرول
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"; // غیرفعال کردن اسکرول
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""; // فعال کردن اسکرول
+      document.body.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
@@ -28,7 +27,7 @@ export default function MobileMenu() {
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.3, ease: "easeOut" },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
@@ -38,24 +37,24 @@ export default function MobileMenu() {
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
+      x: 0,
       transition: { duration: 0.3, ease: "easeOut" },
     },
   };
 
   const navItems = [
-    { to: "/products", label: "محصولات", icon: "🛒" },
-    { to: "/blog", label: "بلاگ", icon: "📝" },
-    { to: "/about", label: "درباره ما", icon: "ℹ️" },
-    { to: "/contact", label: "تماس", icon: "📞" },
-    { to: "/cart", label: "سبد خرید", icon: "🛍️" },
+    { to: "/products", label: "محصولات" },
+    { to: "/blog", label: "بلاگ" },
+    { to: "/about", label: "درباره ما" },
+    { to: "/contact", label: "تماس" },
+    { to: "/cart", label: "سبد خرید" },
   ];
 
   return (
     <>
-      {/* دکمه همبرگری - فقط وقتی منو بسته است نمایش داده می‌شود */}
       {!isOpen && (
         <motion.button
           className="mobile-menu__toggle"
@@ -66,8 +65,6 @@ export default function MobileMenu() {
           ☰
         </motion.button>
       )}
-
-      {/* لایه تیره (Overlay) */}
       {isOpen && (
         <motion.div
           className="mobile-menu__overlay"
@@ -77,8 +74,6 @@ export default function MobileMenu() {
           onClick={toggleMenu}
         />
       )}
-
-      {/* منوی موبایل */}
       {isOpen && (
         <motion.nav
           className="mobile-menu"
@@ -86,16 +81,18 @@ export default function MobileMenu() {
           initial="hidden"
           animate="visible"
         >
-          {/* دکمه ضربدر داخل منو */}
           <motion.button
             className="mobile-menu__close"
             onClick={toggleMenu}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.9 }}
           >
             ✕
           </motion.button>
-          <div className="mobile-menu__items">
+          <motion.div
+            className="mobile-menu__items"
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          >
             {navItems.map((item, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <NavLink
@@ -107,12 +104,11 @@ export default function MobileMenu() {
                   }
                   onClick={toggleMenu}
                 >
-                  <span className="mobile-menu__icon">{item.icon}</span>
                   <span className="mobile-menu__label">{item.label}</span>
                 </NavLink>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.nav>
       )}
     </>

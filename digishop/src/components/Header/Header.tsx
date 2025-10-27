@@ -1,5 +1,6 @@
 // src/components/Header/Header.tsx
 import "./Header.css";
+import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../app/store";
@@ -15,25 +16,57 @@ export default function Header() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <header className="header">
+    <motion.header
+      className="header"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="container">
-        <MobileMenu />
-        <Link
-          to="/"
-          className={`header__logo ${isHome ? "header__logo--active" : ""}`}
+        <motion.nav
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
-          DigiTali
-        </Link>
-        <div className="header__main">
+          <MobileMenu />
+        </motion.nav>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        >
+          <Link
+            to="/"
+            className={`header__logo ${isHome ? "header__logo--active" : ""}`}
+          >
+            DigiTali
+          </Link>
+        </motion.div>
+        <motion.ul
+          className="header__main"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
           <Navbar />
-        </div>
-        <div className="header__actions">
+        </motion.ul>
+        <motion.div
+          className="header__actions"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+        >
           <ThemeToggle />
           <Link to="/cart" className="header__cart-link">
-            سبد خرید ({totalItems})
+            <motion.span
+              className="header__cart-icon"
+              whileHover={{ rotate: 10, scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            ></motion.span>
+            <span className="header__cart-text">سبد خرید ({totalItems})</span>
           </Link>
-        </div>
+        </motion.div>
       </div>
-    </header>
+    </motion.header>
   );
 }

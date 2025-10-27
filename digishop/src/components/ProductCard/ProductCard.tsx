@@ -66,7 +66,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
         <motion.button
           onClick={handleAddToCart}
-          className="btn btn-primary product-card__add-btn"
+          className="btn-primary product-card__add-btn"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

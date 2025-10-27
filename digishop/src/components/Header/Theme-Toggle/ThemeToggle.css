@@ -1,5 +1,4 @@
-/* src/components/ThemeToggle.css */
-
+/* src/components/ThemeToggle/ThemeToggle.css */
 .theme-toggle {
   width: 44px;
   height: 44px;
@@ -12,11 +11,13 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
 
 .theme-toggle:hover {
   border-color: var(--color-primary);
-  transform: scale(1.05);
+  background: var(--color-bg-hover);
 }
 
 .theme-toggle__icon {
@@ -24,7 +25,6 @@
   line-height: 1;
 }
 
-/* Responsive: در موبایل کوچک‌تر */
 @media (max-width: 767px) {
   .theme-toggle {
     width: 40px;
