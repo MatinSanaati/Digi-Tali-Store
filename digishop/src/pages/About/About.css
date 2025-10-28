@@ -1,93 +1,114 @@
-/* src/pages/About.css */
 .about-page {
-  padding: var(--space-2xl) 0;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
   margin-top: 2.7rem;
 }
 
-.about-page h1 {
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  color: var(--color-text);
-  font-size: 2.5rem;
+.about-page__title {
+  font-size: 2.75rem;
+  margin-bottom: var(--space-2xl);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
 }
 
 .about-page__intro {
   text-align: center;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto var(--space-2xl);
-  padding: var(--space-lg);
-  background: var(--color-bg-card);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: var(--space-xl);
+  transition: all 0.4s ease;
 }
 
 .about-page__intro:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
 }
 
 .about-page__intro-image {
   width: 100%;
-  max-height: 300px;
+  height: auto;
+  max-height: 380px;
   object-fit: cover;
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-md);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-md);
 }
 
+.about-page__intro-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* بخش‌های مشترک */
 .about-page__mission,
 .about-page__values,
-.about-page__vision {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-lg);
-  background: var(--color-bg-card);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.about-page__vision,
+.about-page__team {
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-xl);
+  transition: all 0.4s ease;
 }
 
 .about-page__mission:hover,
 .about-page__values:hover,
-.about-page__vision:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
+.about-page__vision:hover,
+.about-page__team:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
 }
 
+/* ارزش‌ها */
 .about-page__values-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding-right: var(--space-xl);
-  color: var(--color-text-light);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  padding: 0;
+  list-style: none;
 }
 
 .about-page__value-item {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  font-size: 1.125rem;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.about-page__value-item:hover {
+  background: var(--color-hover);
+  transform: translateX(8px);
 }
 
 .about-page__value-icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   transition: transform 0.3s ease;
 }
 
 .about-page__value-item:hover .about-page__value-icon {
-  transform: scale(1.2);
+  transform: scale(1.3) rotate(5deg);
 }
 
+/* تیم */
 .about-page__team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-lg);
-  margin-top: var(--space-md);
+  margin-top: var(--space-lg);
 }
 
 .about-page__team-member {
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .about-page__team-image {
@@ -96,11 +117,13 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: var(--space-sm);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
 }
 
 .about-page__team-member:hover .about-page__team-image {
   transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .about-page__team-name {
@@ -112,66 +135,113 @@
 
 .about-page__team-role {
   font-size: 0.875rem;
-  color: var(--color-text-light);
+  color: var(--color-primary);
   margin: 0;
+  font-weight: 500;
 }
 
+/* CTA */
 .about-page__cta {
-  text-align: center;
-  margin-top: var(--space-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-top: var(--space-2xl);
 }
 
-.about-page__cta .btn {
-  padding: var(--space-md) var(--space-xl);
-  font-size: 1.125rem;
-  transition: transform 0.3s ease, background-color 0.2s ease;
+.about-page__cta-btn {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
 }
 
-.about-page__cta .btn:hover {
-  transform: scale(1.05);
+.about-page__cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Responsive */
-@media (max-width: 767px) {
-  .about-page h1 {
-    font-size: 2rem;
-  }
+.about-page__cta-btn,
+.about-page__cta-secondary {
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-xl);
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
 
-  .about-page__intro {
-    padding: var(--space-md);
+.about-page__cta-secondary:hover {
+  background: var(--color-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ریسپانسیو */
+@media (max-width: 1024px) {
+  .about-page__title {
+    font-size: 2.4rem;
   }
 
   .about-page__intro-image {
-    max-height: 200px;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-page {
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  .about-page__title {
+    font-size: 2rem;
+  }
+
+  .about-page__intro,
+  .about-page__mission,
+  .about-page__values,
+  .about-page__vision,
+  .about-page__team {
+    padding: var(--space-lg);
+  }
+
+  .about-page__intro-image {
+    max-height: 220px;
+    border-radius: var(--radius-md);
   }
 
   .about-page__values-list {
-    padding-right: 0;
-  }
-
-  .about-page__value-item {
-    font-size: 1rem;
+    grid-template-columns: 1fr;
   }
 
   .about-page__team-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .about-page__team-image {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
 
-  .about-page__team-name {
+  .about-page__cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-page__cta-btn,
+  .about-page__cta-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page__team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page__intro-text {
     font-size: 1rem;
-  }
-
-  .about-page__team-role {
-    font-size: 0.75rem;
-  }
-
-  .about-page__cta .btn {
-    font-size: 1rem;
-    padding: var(--space-sm) var(--space-lg);
   }
 }

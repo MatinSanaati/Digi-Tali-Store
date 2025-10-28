@@ -1,4 +1,3 @@
-// src/pages/Cart.tsx
 import { useSelector, useDispatch } from "react-redux";
 import { motion, type Variants } from "framer-motion";
 import type { AppDispatch, RootState } from "../../app/store";
@@ -19,13 +18,14 @@ export default function Cart() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
@@ -53,14 +53,14 @@ export default function Cart() {
   if (cartItems.length === 0) {
     return (
       <motion.div
-        className="cart-empty"
+        className="cart-empty container"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h2 variants={itemVariants}>سبد خرید شما خالی است</motion.h2>
         <motion.div variants={itemVariants}>
-          <Link to="/" className="cart-empty__link">
+          <Link to="/" className="btn btn-primary cart-empty__link">
             برگردیم به فروشگاه
           </Link>
         </motion.div>
@@ -70,12 +70,12 @@ export default function Cart() {
 
   return (
     <motion.div
-      className="cart-page"
+      className="cart-page container"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <motion.h2 variants={itemVariants}>
+      <motion.h2 variants={itemVariants} className="cart-page__title">
         سبد خرید ({cartItems.length} کالا)
       </motion.h2>
 
@@ -85,15 +85,19 @@ export default function Cart() {
             key={item.id}
             className="cart-item card"
             variants={itemVariants}
-            whileHover={{ scale: 1.03, boxShadow: "var(--shadow-md)" }}
+            whileHover={{ y: -4, boxShadow: "var(--shadow-lg)" }}
+            layout
           >
-            <img
-              src={item.image}
-              alt={item.name}
-              className="cart-item__image"
-            />
+            <div className="cart-item__image-wrapper">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="cart-item__image"
+              />
+            </div>
+
             <div className="cart-item__info">
-              <h3>{item.name}</h3>
+              <h3 className="cart-item__name">{item.name}</h3>
               <p className="cart-item__price">
                 {item.price.toLocaleString()} تومان
               </p>
@@ -107,7 +111,7 @@ export default function Cart() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                -
+                −
               </motion.button>
               <span className="cart-item__quantity-value">{item.quantity}</span>
               <motion.button
