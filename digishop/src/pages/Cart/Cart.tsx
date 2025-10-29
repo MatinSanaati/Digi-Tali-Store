@@ -44,31 +44,39 @@ export default function Cart() {
   // === سبد خالی ===
   if (cartItems.length === 0) {
     return (
-      <motion.div
-        className="cart-empty"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h2 variants={itemVariants}>سبد خرید شما خالی است</motion.h2>
-        <AnimatePresence>
-          <motion.div
-            key="return-link"
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <Link to="/" className="cart-empty__link">
-              برگردیم به فروشگاه
-            </Link>
-          </motion.div>
-        </AnimatePresence>
-      </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="cart-empty-state"
+          className="cart-empty"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          {/* متن با key → فوراً وارد میشه */}
+          <motion.h2 key="empty-title" variants={itemVariants}>
+            سبد خرید شما خالی است
+          </motion.h2>
+
+          {/* لینک با AnimatePresence داخلی */}
+          <AnimatePresence>
+            <motion.div
+              key="return-link"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <Link to="/" className="cart-empty__link">
+                برگردیم به فروشگاه
+              </Link>
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+      </AnimatePresence>
     );
   }
-
   // === سبد پر ===
   return (
     <motion.div
@@ -162,9 +170,7 @@ export default function Cart() {
             </p>
           </div>
           <div className="cart-sidebar__actions">
-            <button className="cart-sidebar__checkout-btn">
-              ثبت سفارش
-            </button>
+            <button className="cart-sidebar__checkout-btn">ثبت سفارش</button>
           </div>
         </motion.aside>
       </div>
