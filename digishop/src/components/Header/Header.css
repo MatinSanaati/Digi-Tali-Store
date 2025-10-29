@@ -89,6 +89,109 @@
   font-size: 1rem;
 }
 
+/* =============== Cart Icon + Badge =============== */
+.header__cart-badge-container {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__cart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__cart-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.76 1.38-.19 3.06 1.23 3.06h12v-2H7.42l.77-1.4h7.23c.88 0 1.62-.67 1.72-1.55l1.84-8.05H6.57L5.71 4H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E")
+    no-repeat center;
+  mask-size: 60%;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+/* نوتیفیکیشن عدد — اسکرول تلگرام */
+.header__cart-badge {
+  position: absolute;
+  inset: 0;
+  min-width: 20px;
+  height: 20px;
+  background: var(--color-secondary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+}
+
+@keyframes scrollCount {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 767px) {
+  .header__cart-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header__cart-badge-container {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header__cart-badge {
+    min-width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__cart-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__cart-badge-container {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header__cart-badge {
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+  }
+}
+
 @media (max-width: 767px) {
   .header .container {
     gap: var(--space-sm);

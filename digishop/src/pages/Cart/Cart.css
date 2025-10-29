@@ -1,79 +1,51 @@
-/* =============== Empty Cart =============== */
-.cart-empty {
-  grid-column: 1 /-1;
-  text-align: center;
-  padding: var(--space-xl);
-  color: var(--color-text-light);
-  margin-top: 10rem;
-}
-
-.cart-empty h2 {
-  font-size: 1.8rem;
-  margin-bottom: var(--space-lg);
-  color: var(--color-text);
-  font-weight: 600;
-}
-
-.cart-empty__link {
-  display: inline-block;
-  padding: var(--space-md) var(--space-2xl);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-primary-dark)
-  );
-  color: white;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-md);
-  font-size: 1.05rem;
-}
-
-.cart-empty__link:hover {
-  background: linear-gradient(135deg, var(--color-primary-dark), #1a4971);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-}
-
-.cart-empty__link:active {
-  transform: translateY(-1px);
-}
-
+/* =============== Cart Page — Merged Legacy + Digikala Layers =============== */
 .cart-page {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) 0 var(--space-xl) var(--space-md);
+  min-height: 100vh;
+  margin-top: 5rem;
+}
+
+/* === لایه 1: عنوان === */
+.cart-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  padding: 0 var(--space-md);
+}
+
+.cart-header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.cart-header__count {
+  font-size: 1rem;
+  color: var(--color-text-light);
+}
+
+/* === لایه‌بندی اصلی === */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-xl);
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
 
-.cart-layout {
-  display: flex;
-  gap: var(--space-xl);
-  margin-top: var(--space-xl);
-  margin-top: 5rem;
-}
-
+/* =============== Products List (Legacy + Enhanced) =============== */
 .cart-products {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
   flex: 2;
   min-width: 0;
 }
 
-.cart-sidebar {
-  flex: 1;
-  min-width: 280px;
-  padding: var(--space-xl);
-  background: var(--color-bg-card);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--color-border);
-  height: fit-content;
-  position: sticky;
-  top: 100px;
-}
-
-/* =============== Products List =============== */
 .cart-item {
   display: flex;
   align-items: center;
@@ -86,6 +58,13 @@
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-border);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 /* سمت چپ: اطلاعات */
@@ -127,6 +106,7 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  background: var(--color-bg);
 }
 
 .cart-item__image {
@@ -136,22 +116,101 @@
   transition: transform 0.4s ease;
 }
 
-/* =============== Optional: Hover Zoom (جدا از float) =============== */
 .cart-item:hover .cart-item__image {
   transform: scale(1.08);
-  transition: transform 0.4s ease;
 }
 
 .cart-products .cart-item:last-of-type {
   margin-bottom: 0;
 }
 
-.cart-products__continue {
-  margin-top: var(--space-xl);
-  text-align: center;
+/* =============== Quantity Controls (Legacy Professional) =============== */
+.cart-item__quantity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--radius-sm);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  margin-bottom: var(--space-sm);
 }
 
-/* =============== Sidebar =============== */
+.cart-item__quantity-btn,
+.cart-item__quantity-btn--plus {
+  outline: none;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-secondary);
+}
+
+/* دکمه مشترک */
+.cart-item__quantity-btn {
+  width: 22px;
+  height: 22px;
+  background-color: var(--color-primary-dark);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* دکمه کاهش (−) */
+.cart-item__quantity-btn--minus:hover {
+  background: linear-gradient(135deg, var(--color-secondary), #c53030);
+  color: white;
+  box-shadow: 0 2px 4px rgba(197, 48, 48, 0.3);
+}
+
+/* دکمه افزایش (+) */
+.cart-item__quantity-btn--plus:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  color: white;
+  box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
+}
+
+/* عدد وسط */
+.cart-item__quantity-value {
+  min-width: 38px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =============== Sidebar (Legacy + Sticky) =============== */
+.cart-sidebar {
+  flex: 1;
+  min-width: 280px;
+  padding: var(--space-xl);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  height: fit-content;
+}
+
 .cart-sidebar__title {
   font-size: 1.35rem;
   font-weight: 700;
@@ -208,106 +267,119 @@
   font-weight: 600;
   border-radius: var(--radius-md);
   min-width: 100%;
-}
-
-/* =============== Quantity Controls (Professional & Animated) =============== */
-.cart-item__quantity {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
-  margin-bottom: var(--space-sm);
-}
-
-.cart-item__quantity-btn,
-.cart-item__quantity-btn--plus {
-  outline: none;
   border: none;
-  font-weight: bold;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  color: var(--color-secondary);
-}
-
-/* دکمه مشترک */
-.cart-item__quantity-btn {
-  width: 22px;
-  height: 22px;
-  border: none;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* دکمه کاهش (−) */
-.cart-item__quantity-btn--minus {
-  background: linear-gradient(135deg, var(--color-secondary), #c53030);
   color: white;
-  box-shadow: 0 2px 4px rgba(197, 48, 48, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* دکمه افزایش (+) */
-.cart-item__quantity-btn--plus {
+.cart-sidebar__checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =============== Empty Cart (Legacy Enhanced) =============== */
+.cart-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-2xl);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-top: 5rem;
+}
+
+.cart-empty h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.cart-empty__link {
+  display: inline-block;
+  padding: var(--space-md) var(--space-2xl);
   background: linear-gradient(
     135deg,
     var(--color-primary),
     var(--color-primary-dark)
   );
   color: white;
-  box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  font-size: 1.05rem;
 }
 
-/* عدد وسط */
-.cart-item__quantity-value {
-  min-width: 38px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: var(--color-text);
-  font-variant-numeric: tabular-nums;
+.cart-empty__link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
-/* =============== Responsive =============== */
-@media (max-width: 1024px) {
+.cart-empty__link:active {
+  transform: translateY(-1px);
+}
+
+/* =============== Responsive — Mobile: Sidebar Below =============== */
+@media (max-width: 992px) {
   .cart-layout {
+    display: flex;
     flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .cart-products {
+    order: 1;
   }
 
   .cart-sidebar {
+    order: 2;
     position: static;
     margin-top: var(--space-xl);
   }
 }
 
+@media (min-width: 993px) {
+  .cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+  }
+
+  .cart-products {
+    order: 1;
+  }
+
+  .cart-sidebar {
+    order: 2;
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+}
+
+/* =============== Mobile Adjustments =============== */
 @media (max-width: 767px) {
+  .cart-header__title {
+    font-size: 1.75rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-item__media-controls {
+    order: -1;
+  }
+
   .cart-item__image-wrapper {
     width: 80px;
     height: 80px;
-  }
-
-  .cart-empty {
-    padding: var(--space-xl);
-  }
-
-  .cart-empty h2 {
-    font-size: 1.7rem;
   }
 
   .cart-item__quantity {
@@ -332,18 +404,18 @@
 }
 
 @media (max-width: 480px) {
-  .cart-empty__link {
-    padding: var(--space-sm) var(--space-xl);
-    font-size: 1rem;
+  .cart-header__title {
+    font-size: 1.5rem;
   }
 
   .cart-item__image-wrapper {
     width: 70px;
     height: 70px;
   }
-  .cart-item__image-wrapper {
-    width: 70px;
-    height: 70px;
+
+  .cart-empty__link {
+    padding: var(--space-sm) var(--space-xl);
+    font-size: 1rem;
   }
 
   .cart-item__quantity-btn {

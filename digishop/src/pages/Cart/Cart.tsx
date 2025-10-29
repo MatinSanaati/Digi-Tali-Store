@@ -1,3 +1,4 @@
+import "./Cart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import type { AppDispatch, RootState } from "../../app/store";
@@ -7,7 +8,6 @@ import {
   decreaseQuantity,
 } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
-import "./Cart.css";
 
 export default function Cart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -31,13 +31,9 @@ export default function Cart() {
   };
 
   const handleIncrease = (id: number) => dispatch(increaseQuantity(id));
-
   const handleDecreaseOrRemove = (id: number, quantity: number) => {
-    if (quantity <= 1) {
-      dispatch(removeFromCart(id));
-    } else {
-      dispatch(decreaseQuantity(id));
-    }
+    if (quantity <= 1) dispatch(removeFromCart(id));
+    else dispatch(decreaseQuantity(id));
   };
 
   const totalPrice = cartItems.reduce(
@@ -45,6 +41,7 @@ export default function Cart() {
     0
   );
 
+  // === سبد خالی ===
   if (cartItems.length === 0) {
     return (
       <motion.div
@@ -72,6 +69,7 @@ export default function Cart() {
     );
   }
 
+  // === سبد پر ===
   return (
     <motion.div
       className="cart-page"
@@ -79,28 +77,27 @@ export default function Cart() {
       initial="hidden"
       animate="visible"
     >
-      <motion.h2 variants={itemVariants} className="cart-page__title">
-        سبد خرید ({cartItems.length} کالا)
-      </motion.h2>
+      {/* === لایه 1: عنوان === */}
+      <motion.header className="cart-header" variants={itemVariants}>
+        <h1 className="cart-header__title">سبد خرید</h1>
+        <p className="cart-header__count">{cartItems.length} کالا</p>
+      </motion.header>
 
-      {/* === ساختار ۲ ستونه === */}
       <div className="cart-layout">
-        {/* === سمت راست: محصولات === */}
-        <motion.div className="cart-products" variants={containerVariants}>
-          {cartItems.map((item) => (
-            <motion.div
+        {/* === لایه 2: محصولات === */}
+        <motion.main className="cart-products" variants={containerVariants}>
+          {cartItems.map((item, index) => (
+            <motion.article
               key={item.id}
               className="cart-item card"
               variants={itemVariants}
+              custom={index}
+              style={{ zIndex: cartItems.length - index }}
             >
-              {/* === سمت راست: عکس + کنترل‌ها === */}
               <div className="cart-item__media-controls">
-                {/* پرنت عکس با انیمیشن float */}
                 <motion.div
                   className="cart-item__image-wrapper"
-                  animate={{
-                    y: [0, -8, 0], // بالا → پایین → بالا
-                  }}
+                  animate={{ y: [0, -8, 0] }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
@@ -116,13 +113,13 @@ export default function Cart() {
                 </motion.div>
 
                 <div className="cart-item__quantity">
-                  {/* دکمه کاهش/حذف — بدون scale */}
                   <motion.button
                     onClick={() =>
                       handleDecreaseOrRemove(item.id, item.quantity)
                     }
                     className="cart-item__quantity-btn cart-item__quantity-btn--minus"
                     data-remove={item.quantity === 1}
+                    whileTap={{ scale: 0.9 }}
                   >
                     {item.quantity === 1 ? "×" : "−"}
                   </motion.button>
@@ -131,31 +128,29 @@ export default function Cart() {
                     {item.quantity}
                   </span>
 
-                  {/* دکمه افزایش — بدون scale */}
                   <motion.button
                     onClick={() => handleIncrease(item.id)}
                     className="cart-item__quantity-btn cart-item__quantity-btn--plus"
+                    whileTap={{ scale: 0.9 }}
                   >
                     +
                   </motion.button>
                 </div>
               </div>
 
-              {/* === سمت چپ: اطلاعات محصول === */}
               <div className="cart-item__info">
                 <h3 className="cart-item__name">{item.name}</h3>
                 <p className="cart-item__price">
                   {item.price.toLocaleString()} تومان
                 </p>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-        </motion.div>
+        </motion.main>
 
-        {/* === سمت چپ: سایدبار === */}
-        <motion.aside className="cart-sidebar card" variants={itemVariants}>
+        {/* === لایه 3: سایدبار چسبنده === */}
+        <motion.aside className="cart-sidebar" variants={itemVariants}>
           <h3 className="cart-sidebar__title">خلاصه سفارش</h3>
-
           <div className="cart-sidebar__details">
             <p>
               <span>جمع محصولات:</span>
@@ -166,9 +161,8 @@ export default function Cart() {
               <span>{totalPrice.toLocaleString()} تومان</span>
             </p>
           </div>
-
           <div className="cart-sidebar__actions">
-            <button className="btn btn-primary cart-sidebar__checkout-btn">
+            <button className="cart-sidebar__checkout-btn">
               ثبت سفارش
             </button>
           </div>
