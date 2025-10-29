@@ -68,7 +68,7 @@ export default function Cart() {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <Link to="/" className="cart-empty__link">
+              <Link to="/products" className="cart-empty__link">
                 برگردیم به فروشگاه
               </Link>
             </motion.div>
