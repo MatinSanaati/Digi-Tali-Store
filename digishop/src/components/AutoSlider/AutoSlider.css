@@ -1,181 +1,81 @@
 .auto-slider {
   position: relative;
-  height: 90vh;
-  width: 100%;
-  margin: 0 auto var(--space-2xl);
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--color-bg-card);
+  width: 100%;
+  height: 90vh;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .auto-slider__track {
   display: flex;
   height: 100%;
-  width: 100%;
 }
 
 .auto-slider__slide {
   min-width: 100%;
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: var(--color-text);
-  padding: var(--space-lg);
-  background: linear-gradient(to top, var(--color-overlay), transparent);
 }
 
 .auto-slider__image {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
-  transition: opacity 0.5s ease;
-}
-
-.auto-slider__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-overlay);
-  z-index: 0;
 }
 
 .auto-slider__content {
+  position: relative;
   z-index: 2;
-  max-width: 700px;
-  padding: var(--space-lg);
-  background: var(--color-bg-card);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.auto-slider__content:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.auto-slider__title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: var(--space-sm);
-  color: var(--color-text);
-  text-shadow: 0 2px 4px var(--color-shadow);
-}
-
-.auto-slider__description {
-  font-size: 1.25rem;
-  color: var(--color-text-light);
-  text-shadow: 0 1px 2px var(--color-shadow);
-}
-
-.auto-slider__indicators {
-  position: absolute;
-  bottom: var(--space-md);
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  z-index: 3;
-}
-
-.auto-slider__indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background-color: var(--color-bg);
-  margin: 0 var(--space-xs);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.auto-slider__indicator:hover {
-  background-color: var(--color-hover);
-}
-
-.auto-slider__indicator.active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary-dark);
-  transform: scale(1.2);
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
 }
 
 .auto-slider__nav {
   position: absolute;
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%);
   z-index: 3;
-  font-size: 1.5rem;
-  padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-bg-card);
-  color: var(--color-text);
-  transition: opacity 0.3s ease, background-color 0.3s ease;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.auto-slider__nav:hover {
-  background-color: var(--color-hover);
+.auto-slider__nav.prev {
+  left: 85%;
+}
+.auto-slider__nav.next {
+  right: 5%;
 }
 
-.auto-slider__nav--prev {
-  left: var(--space-md);
+.auto-slider__dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
-.auto-slider__nav--next {
-  right: var(--space-md);
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background-color: #fff;
+  cursor: pointer;
 }
 
-/* Responsive: غیرفعال کردن افکت‌های هاور در موبایل */
-@media (max-width: 767px) {
-  .auto-slider {
-    height: 70vh;
-  }
-
-  .auto-slider__title {
-    font-size: 1.5rem;
-  }
-
-  .auto-slider__description {
-    font-size: 1rem;
-  }
-
-  .auto-slider__content {
-    max-width: 90%;
-    padding: var(--space-md);
-  }
-
-  .auto-slider__nav {
-    font-size: 1.2rem;
-    padding: var(--space-xs) var(--space-sm);
-    opacity: 1 !important; /* همیشه قابل مشاهده در موبایل */
-  }
-
-  .auto-slider__indicators {
-    opacity: 1 !important; /* همیشه قابل مشاهده در موبایل */
-  }
-
-  .auto-slider__overlay {
-    display: none; /* غیرفعال کردن overlay در موبایل */
-  }
-}
-
-@media (max-width: 480px) {
-  .auto-slider {
-    height: 60vh;
-  }
-
-  .auto-slider__title {
-    font-size: 1.25rem;
-  }
-
-  .auto-slider__description {
-    font-size: 0.875rem;
-  }
+.dot.active {
+  background-color: #333;
 }

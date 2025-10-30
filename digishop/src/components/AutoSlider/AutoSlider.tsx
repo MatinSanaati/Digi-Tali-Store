@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import type { PanInfo } from "framer-motion";
 import "./AutoSlider.css";
@@ -40,173 +40,104 @@ const slides: Slide[] = [
 ];
 
 export default function AutoSlider() {
-  const [[page], setPage] = useState<[number, number]>([0, 0]);
-  const sliderRef = useRef<number | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [current, setCurrent] = useState<number>(0);
   const slideCount = slides.length;
+  const intervalRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    sliderRef.current = window.setInterval(() => {
-      setPage(([currentPage]) => {
-        const nextPage = (currentPage + 1) % slideCount;
-        return [nextPage, 1];
-      });
-    }, 8000);
-
-    return () => {
-      if (sliderRef.current !== null) {
-        window.clearInterval(sliderRef.current);
-      }
-    };
+  // ثابت کردن توابع با useCallback برای جلوگیری از هشدارهای ESLint
+  const startAutoPlay = useCallback(() => {
+    if (intervalRef.current === null) {
+      intervalRef.current = window.setInterval(() => {
+        setCurrent((prev) => (prev + 1) % slideCount);
+      }, 5000);
+    }
   }, [slideCount]);
 
-  const pauseAutoPlay = () => {
-    if (sliderRef.current !== null) {
-      window.clearInterval(sliderRef.current);
-      sliderRef.current = null;
+  const stopAutoPlay = useCallback(() => {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-  };
+  }, []);
 
-  const resumeAutoPlay = () => {
-    if (sliderRef.current === null) {
-      sliderRef.current = window.setInterval(() => {
-        setPage(([currentPage]) => {
-          const nextPage = (currentPage + 1) % slideCount;
-          return [nextPage, 1];
-        });
-      }, 8000);
-    }
-  };
+  // اجرای خودکار اسلایدر یک بار در mount و cleanup درست
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, [startAutoPlay, stopAutoPlay]);
 
-  const paginate = (newPage: number) => {
-    pauseAutoPlay();
-    const newDirection = newPage > page ? 1 : -1;
-    setPage([newPage, newDirection]);
-    setTimeout(resumeAutoPlay, 9000);
-  };
-
-  const onDragEnd = (
+  // مدیریت Drag/Swipe
+  const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
-    const swipeThreshold = 100;
+    const threshold = 100;
 
-    if (Math.abs(offset) > swipeThreshold || Math.abs(velocity) > 300) {
-      if (offset > 0 || velocity > 0) {
-        paginate((page - 1 + slideCount) % slideCount);
-      } else {
-        paginate((page + 1) % slideCount);
-      }
-    } else {
-      resumeAutoPlay();
+    if (offset > threshold || velocity > 300) {
+      prevSlide();
+    } else if (offset < -threshold || velocity < -300) {
+      nextSlide();
     }
   };
 
-  const goToNext = () => paginate((page + 1) % slideCount);
-  const goToPrev = () => paginate((page - 1 + slideCount) % slideCount);
-
-  const slideVariants = {
-    enter: { opacity: 0, x: "100%" },
-    center: { opacity: 1, x: "0%" },
-    exit: { opacity: 0, x: "-100%" },
-  };
+  const nextSlide = useCallback(
+    () => setCurrent((prev) => (prev + 1) % slideCount),
+    [slideCount]
+  );
+  const prevSlide = useCallback(
+    () => setCurrent((prev) => (prev - 1 + slideCount) % slideCount),
+    [slideCount]
+  );
 
   return (
     <div
       className="auto-slider"
-      onMouseEnter={() => {
-        pauseAutoPlay();
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        resumeAutoPlay();
-        setIsHovered(false);
-      }}
+      onMouseEnter={stopAutoPlay}
+      onMouseLeave={startAutoPlay}
     >
       <motion.div
         className="auto-slider__track"
-        animate={{ x: `-${page * 100}%` }}
-        transition={{ type: "spring", stiffness: 150, damping: 50, mass: 1 }}
         drag="x"
-        dragConstraints={{ left: -(slideCount - 1) * 100, right: 0 }}
-        dragElastic={0.1}
-        onDragEnd={onDragEnd}
+        dragElastic={0.2}
+        dragConstraints={{ left: -100 * (slideCount - 1), right: 0 }}
+        onDragEnd={handleDragEnd}
+        animate={{ x: `-${current * 100}%` }}
+        transition={{ type: "spring", stiffness: 120, damping: 30 }}
         style={{ width: `${slideCount * 100}%` }}
       >
-        {slides.map((slide, idx) => (
-          <motion.div
-            key={slide.id}
-            className="auto-slider__slide"
-            variants={slideVariants}
-            initial="enter"
-            animate={idx === page ? "center" : "exit"}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <motion.img
+        {slides.map((slide) => (
+          <div key={slide.id} className="auto-slider__slide">
+            <img
               src={slide.image}
               alt={slide.title}
               className="auto-slider__image"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 0.7 : 0.85 }}
-              transition={{ duration: 0.5 }}
             />
-            <motion.div
-              className="auto-slider__overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 0.3 : 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.div
-              className="auto-slider__content card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 0.95, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h3 className="auto-slider__title">{slide.title}</h3>
-              <p className="auto-slider__description">{slide.description}</p>
-            </motion.div>
-          </motion.div>
+            <div className="auto-slider__content">
+              <h3>{slide.title}</h3>
+              <p>{slide.description}</p>
+            </div>
+          </div>
         ))}
       </motion.div>
 
-      <motion.button
-        className="auto-slider__nav auto-slider__nav--prev btn"
-        onClick={goToPrev}
-        initial={{ opacity: 0.3 }}
-        animate={{ opacity: isHovered ? 1 : 0.3 }}
-        transition={{ duration: 0.3 }}
-      >
-        &larr;
-      </motion.button>
-      <motion.button
-        className="auto-slider__nav auto-slider__nav--next btn"
-        onClick={goToNext}
-        initial={{ opacity: 0.3 }}
-        animate={{ opacity: isHovered ? 1 : 0.3 }}
-        transition={{ duration: 0.3 }}
-      >
-        &rarr;
-      </motion.button>
+      <button className="auto-slider__nav prev" onClick={prevSlide}>
+        &#10095;
+      </button>
+      <button className="auto-slider__nav next" onClick={nextSlide}>
+        &#10094;
+      </button>
 
-      <motion.div
-        className="auto-slider__indicators"
-        initial={{ opacity: 0.3 }}
-        animate={{ opacity: isHovered ? 1 : 0.3 }}
-        transition={{ duration: 0.3 }}
-      >
+      <div className="auto-slider__dots">
         {slides.map((_, idx) => (
-          <motion.button
+          <button
             key={idx}
-            onClick={() => paginate(idx)}
-            className={`auto-slider__indicator ${idx === page ? "active" : ""}`}
-            aria-label={`Go to slide ${idx + 1}`}
-            whileHover={{ scale: 1.2 }}
-            transition={{ duration: 0.2 }}
+            className={`dot ${idx === current ? "active" : ""}`}
+            onClick={() => setCurrent(idx)}
           />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
