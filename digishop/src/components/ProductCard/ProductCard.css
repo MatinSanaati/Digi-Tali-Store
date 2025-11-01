@@ -57,15 +57,6 @@
   font-weight: 500;
 }
 
-.product-card__add-btn {
-  all: unset;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  transition: background-color 0.2s ease;
-}
-
 /* Responsive */
 @media (max-width: 767px) {
   .product-card {
@@ -85,10 +76,6 @@
   }
 
   .product-card__price {
-    font-size: 0.875rem;
-  }
-
-  .product-card__add-btn {
     font-size: 0.875rem;
   }
 }

@@ -7,6 +7,7 @@ interface CartItem {
   price: number;
   quantity: number;
   image: string;
+  color?: string; // اضافه شده
 }
 
 interface CartState {

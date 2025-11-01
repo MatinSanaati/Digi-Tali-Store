@@ -14,6 +14,8 @@ export interface Product {
     | "smartwatch"
     | "computer_parts"
     | "digital_pen";
+  colors?: string[]; // اضافه شده
+  features?: string[]; // ویژگی‌ها
 }
 
 export const mockProducts: Product[] = [
@@ -24,6 +26,13 @@ export const mockProducts: Product[] = [
     price: 45000000,
     image: "https://via.placeholder.com/150?text=iPhone+15+Pro",
     category: "mobile",
+    colors: ["#000000", "#ffffff", "#ff0000"],
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 2,
@@ -31,6 +40,13 @@ export const mockProducts: Product[] = [
     price: 38000000,
     image: "https://via.placeholder.com/150?text=Galaxy+S24",
     category: "mobile",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 3,
@@ -38,6 +54,13 @@ export const mockProducts: Product[] = [
     price: 32000000,
     image: "https://via.placeholder.com/150?text=Xiaomi+14+Pro",
     category: "mobile",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 4,
@@ -45,6 +68,13 @@ export const mockProducts: Product[] = [
     price: 35000000,
     image: "https://via.placeholder.com/150?text=Huawei+P60+Pro",
     category: "mobile",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 5,
@@ -52,6 +82,13 @@ export const mockProducts: Product[] = [
     price: 30000000,
     image: "https://via.placeholder.com/150?text=Pixel+8",
     category: "mobile",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Tablet
@@ -61,6 +98,13 @@ export const mockProducts: Product[] = [
     price: 52000000,
     image: "https://via.placeholder.com/150?text=iPad+Pro+M2",
     category: "tablet",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 7,
@@ -68,6 +112,13 @@ export const mockProducts: Product[] = [
     price: 35000000,
     image: "https://via.placeholder.com/150?text=Galaxy+Tab+S9",
     category: "tablet",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 8,
@@ -75,6 +126,13 @@ export const mockProducts: Product[] = [
     price: 22000000,
     image: "https://via.placeholder.com/150?text=Lenovo+Tab+P11+Pro",
     category: "tablet",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 9,
@@ -82,6 +140,13 @@ export const mockProducts: Product[] = [
     price: 28000000,
     image: "https://via.placeholder.com/150?text=Surface+Go+3",
     category: "tablet",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Accessory
@@ -91,6 +156,13 @@ export const mockProducts: Product[] = [
     price: 450000,
     image: "https://via.placeholder.com/150?text=Leather+Case",
     category: "accessory",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 11,
@@ -98,6 +170,13 @@ export const mockProducts: Product[] = [
     price: 1200000,
     image: "https://via.placeholder.com/150?text=Wireless+Charger",
     category: "accessory",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 12,
@@ -105,6 +184,13 @@ export const mockProducts: Product[] = [
     price: 350000,
     image: "https://via.placeholder.com/150?text=Anker+USB-C+Cable",
     category: "accessory",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 13,
@@ -112,6 +198,13 @@ export const mockProducts: Product[] = [
     price: 1500000,
     image: "https://via.placeholder.com/150?text=Xiaomi+PowerBank",
     category: "accessory",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Laptop
@@ -121,6 +214,13 @@ export const mockProducts: Product[] = [
     price: 65000000,
     image: "https://via.placeholder.com/150?text=MacBook+Air+M2",
     category: "laptop",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 15,
@@ -128,6 +228,13 @@ export const mockProducts: Product[] = [
     price: 120000000,
     image: "https://via.placeholder.com/150?text=MacBook+Pro+M2+Max",
     category: "laptop",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 16,
@@ -135,6 +242,13 @@ export const mockProducts: Product[] = [
     price: 48000000,
     image: "https://via.placeholder.com/150?text=ThinkPad+X1+Carbon",
     category: "laptop",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 17,
@@ -142,6 +256,13 @@ export const mockProducts: Product[] = [
     price: 55000000,
     image: "https://via.placeholder.com/150?text=Dell+XPS+13",
     category: "laptop",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 18,
@@ -149,6 +270,13 @@ export const mockProducts: Product[] = [
     price: 60000000,
     image: "https://via.placeholder.com/150?text=Asus+ROG+Zephyrus+G14",
     category: "laptop",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 19,
@@ -156,6 +284,13 @@ export const mockProducts: Product[] = [
     price: 52000000,
     image: "https://via.placeholder.com/150?text=HP+Spectre+x360",
     category: "laptop",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Headphone
@@ -165,6 +300,13 @@ export const mockProducts: Product[] = [
     price: 8500000,
     image: "https://via.placeholder.com/150?text=AirPods+Pro+2",
     category: "headphone",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 21,
@@ -172,6 +314,13 @@ export const mockProducts: Product[] = [
     price: 15000000,
     image: "https://via.placeholder.com/150?text=Sony+WH-1000XM5",
     category: "headphone",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 22,
@@ -179,6 +328,13 @@ export const mockProducts: Product[] = [
     price: 13500000,
     image: "https://via.placeholder.com/150?text=Bose+QC45",
     category: "headphone",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 23,
@@ -186,6 +342,13 @@ export const mockProducts: Product[] = [
     price: 6500000,
     image: "https://via.placeholder.com/150?text=JBL+Live+660NC",
     category: "headphone",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Monitor
@@ -195,6 +358,13 @@ export const mockProducts: Product[] = [
     price: 25000000,
     image: "https://via.placeholder.com/150?text=Samsung+Odyssey+G7",
     category: "monitor",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 25,
@@ -202,6 +372,13 @@ export const mockProducts: Product[] = [
     price: 20000000,
     image: "https://via.placeholder.com/150?text=LG+UltraGear+27",
     category: "monitor",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 26,
@@ -209,6 +386,13 @@ export const mockProducts: Product[] = [
     price: 28000000,
     image: "https://via.placeholder.com/150?text=Dell+UltraSharp+27",
     category: "monitor",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 27,
@@ -216,6 +400,13 @@ export const mockProducts: Product[] = [
     price: 32000000,
     image: "https://via.placeholder.com/150?text=Asus+ProArt+32",
     category: "monitor",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Smartwatch
@@ -225,6 +416,13 @@ export const mockProducts: Product[] = [
     price: 18000000,
     image: "https://via.placeholder.com/150?text=Apple+Watch+Series+9",
     category: "smartwatch",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 29,
@@ -232,6 +430,13 @@ export const mockProducts: Product[] = [
     price: 12000000,
     image: "https://via.placeholder.com/150?text=Galaxy+Watch+6",
     category: "smartwatch",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 30,
@@ -239,6 +444,13 @@ export const mockProducts: Product[] = [
     price: 8500000,
     image: "https://via.placeholder.com/150?text=Huawei+Watch+GT+4",
     category: "smartwatch",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 31,
@@ -246,6 +458,13 @@ export const mockProducts: Product[] = [
     price: 6000000,
     image: "https://via.placeholder.com/150?text=Xiaomi+Watch+S1",
     category: "smartwatch",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Computer Parts
@@ -255,6 +474,13 @@ export const mockProducts: Product[] = [
     price: 4500000,
     image: "https://via.placeholder.com/150?text=Logitech+MX+Master+3S",
     category: "computer_parts",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 33,
@@ -262,6 +488,13 @@ export const mockProducts: Product[] = [
     price: 3500000,
     image: "https://via.placeholder.com/150?text=Keychron+K8",
     category: "computer_parts",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 34,
@@ -269,6 +502,13 @@ export const mockProducts: Product[] = [
     price: 800000,
     image: "https://via.placeholder.com/150?text=SanDisk+128GB",
     category: "computer_parts",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 35,
@@ -276,6 +516,13 @@ export const mockProducts: Product[] = [
     price: 3500000,
     image: "https://via.placeholder.com/150?text=WD+2TB+External",
     category: "computer_parts",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 36,
@@ -283,6 +530,13 @@ export const mockProducts: Product[] = [
     price: 2500000,
     image: "https://via.placeholder.com/150?text=Corsair+16GB+RAM",
     category: "computer_parts",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 37,
@@ -290,6 +544,13 @@ export const mockProducts: Product[] = [
     price: 22000000,
     image: "https://via.placeholder.com/150?text=Intel+i9-13900K",
     category: "computer_parts",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 
   // Digital Pen & Writing Tablet
@@ -299,6 +560,13 @@ export const mockProducts: Product[] = [
     price: 5500000,
     image: "https://via.placeholder.com/150?text=Apple+Pencil+2",
     category: "digital_pen",
+    colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 39,
@@ -306,6 +574,13 @@ export const mockProducts: Product[] = [
     price: 3500000,
     image: "https://via.placeholder.com/150?text=Samsung+S+Pen+Pro",
     category: "digital_pen",
+    colors: ["#000000", "#ffffff", "#ff0000"],
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 40,
@@ -313,6 +588,13 @@ export const mockProducts: Product[] = [
     price: 20000000,
     image: "https://via.placeholder.com/150?text=Remarkable+2",
     category: "digital_pen",
+    colors: ["#000000", "#ffffff", "#ff0000"],
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
   {
     id: 41,
@@ -320,5 +602,12 @@ export const mockProducts: Product[] = [
     price: 2500000,
     image: "https://via.placeholder.com/150?text=Digital+Quran+Pen",
     category: "digital_pen",
+    colors: ["#000000", "#ffffff", "#ff0000"],
+    features: [
+      "صفحه نمایش 6.1 اینچ Super Retina",
+      "پردازنده A17 Bionic",
+      "دوربین 48 مگاپیکسل",
+      "حافظه داخلی 256 گیگابایت",
+    ],
   },
 ];

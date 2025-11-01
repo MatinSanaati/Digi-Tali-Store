@@ -1,48 +1,213 @@
 /* src/pages/ProductDetail.css */
 
 .product-detail-page {
-  padding: var(--space-xl) 0;
+  margin-top: var(--space-2xl);
+  padding: var(--space-2xl) 0;
 }
 
 .product-detail__content {
   display: flex;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
   align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* سمت راست: تصویر محصول */
+.product-detail__image-section {
+  flex: 0 0 400px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .product-detail__image {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
 }
 
-.product-detail__info {
-  flex: 1;
+/* سمت چپ: اطلاعات محصول */
+.product-detail__info-section {
+  flex: 1 1 350px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 .product-detail__title {
-  margin-bottom: var(--space-md);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.product-detail__category {
+  font-size: 1rem;
+  color: var(--color-text-light);
 }
 
 .product-detail__price {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   color: var(--color-secondary);
-  margin-bottom: var(--space-sm);
 }
 
-.product-detail__category {
-  color: var(--color-text-light);
-  margin-bottom: var(--space-lg);
-}
-
+/* دکمه افزودن به سبد خرید */
 .product-detail__add-btn {
-  padding: var(--space-md) var(--space-xl);
-  font-size: 1.125rem;
+  width: 70%;
+  all: unset;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: white;
+  text-align: center;
+  width: fit-content;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.product-detail__add-btn:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* رنگ‌ها */
+.product-detail__color-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-detail__color-title {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.product-detail__colors {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.product-detail__color-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.product-detail__color-label input {
+  display: none;
+}
+
+.product-detail__color-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+/* ویژگی‌ها */
+.product-detail__features-section {
+  margin-top: var(--space-md);
+}
+
+.product-detail__features-title {
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.product-detail__features-list {
+  list-style: disc;
+  padding-left: var(--space-lg);
+  color: var(--color-text-light);
+}
+
+/* کنترل تعداد محصول */
+.cart-item__quantity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--radius-sm);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  margin-top: var(--space-md);
+}
+
+.cart-item__quantity-btn {
+  width: 28px;
+  height: 28px;
+  background-color: var(--color-primary-dark);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-item__quantity-btn--minus:hover {
+  background: linear-gradient(135deg, var(--color-secondary), #c53030);
+}
+
+.cart-item__quantity-btn--plus:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+}
+
+.cart-item__quantity-value {
+  min-width: 36px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+/* محصول پیدا نشد */
 .product-detail__not-found {
   text-align: center;
   font-size: 1.25rem;
   color: var(--color-text-light);
+  margin-top: var(--space-2xl);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-detail__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-detail__info-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-detail__add-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .cart-item__quantity {
+    justify-content: center;
+  }
 }
