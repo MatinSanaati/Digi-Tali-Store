@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import "./ProductCard.css";
 import type { Product } from "../../data/products";
 import { Link } from "react-router-dom";
+import ProductImage from "../ProductImage/ProductImage";
 interface ProductCardProps {
   product: Product;
 }
@@ -40,8 +41,9 @@ export default function ProductCard({ product }: ProductCardProps) {
       transition={{ duration: 0.2 }}
     >
       <Link to={`/product/${product.id}`} className="product-card__link">
-        <img
+        <ProductImage
           src={product.image}
+          localFileName={product.localImageFile}
           alt={product.name}
           className="product-card__image"
         />

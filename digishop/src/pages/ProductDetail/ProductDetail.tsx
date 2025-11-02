@@ -12,6 +12,8 @@ import {
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import type { RootState, AppDispatch } from "../../app/store";
+import ProductImage from "../../components/ProductImage/ProductImage";
+import { colorName } from "../../utils/colorName";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +21,7 @@ export default function ProductDetail() {
   const product = mockProducts.find((p) => p.id === productId);
   const dispatch = useDispatch<AppDispatch>();
 
+  // cartItem اگر محصول داخل سبد هست اینجا پیدا میشه
   const cartItem = useSelector((state: RootState) =>
     state.cart.items.find((item) => item.id === productId)
   );
@@ -46,14 +49,16 @@ export default function ProductDetail() {
         name: product.name,
         price: product.price,
         image: product.image,
+        localImageFile: product.localImageFile,
         quantity: 1,
         color: selectedColor,
+        category: product.category,
+        features: product.features,
       })
     );
   };
 
   const handleIncrease = () => dispatch(increaseQuantity(product.id));
-
   const handleDecreaseOrRemove = (id: number, quantity: number) => {
     if (quantity === 1) dispatch(removeFromCart(id));
     else dispatch(decreaseQuantity(id));
@@ -79,120 +84,140 @@ export default function ProductDetail() {
       : "قلم دیجیتال";
 
   return (
-    <div className="product-detail-page container">
+    <div className="product-detail-page">
       <motion.div
         className="product-detail__content"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.45 }}
       >
-        {/* راست: تصویر محصول */}
-        <motion.div
+        {/* ---------- RIGHT: product visual (image + gallery placeholder) ---------- */}
+        <motion.section
           className="product-detail__image-section"
-          whileHover={{ scale: 1.02 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
         >
-          <img
-            src={product.image}
-            alt={product.name}
-            className="product-detail__image"
-          />
-        </motion.div>
-
-        {/* چپ: اطلاعات محصول */}
-        <motion.div
-          className="product-detail__info-section"
-          initial={{ opacity: 0, x: 50 }}
+          <div className="pd-image-wrapper">
+            <ProductImage
+              src={product.image}
+              localFileName={product.localImageFile || "placeholder.png"}
+              alt={product.name}
+              size="large"
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            />
+          </div>
+        </motion.section>
+        {/* ---------- LEFT: purchase module (copied & adapted from cart UI) ---------- */}
+        <motion.aside
+          className="pd-purchase"
+          initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
         >
-          <h1 className="product-detail__title">{product.name}</h1>
-          <p className="product-detail__category">دسته‌بندی: {categoryName}</p>
-          <p className="product-detail__price">
-            {product.price.toLocaleString()} تومان
-          </p>
+          <div className="pd-card">
+            <h2 className="pd-title">{product.name}</h2>
+            <p className="pd-category">دسته‌بندی: {categoryName}</p>
 
-          {/* انتخاب رنگ */}
-          {product.colors && product.colors.length > 0 && (
-            <div className="product-detail__color-section">
-              <p className="product-detail__color-title">
-                رنگ انتخاب شده: <span>{selectedColor}</span>
-              </p>
-              <div className="product-detail__colors">
-                {product.colors.map((color) => (
-                  <label
-                    key={color}
-                    className="product-detail__color-label"
-                    style={{
-                      borderColor:
-                        selectedColor === color
-                          ? "var(--color-primary)"
-                          : "var(--color-border)",
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="color"
-                      value={color}
-                      checked={selectedColor === color}
-                      onChange={() => setSelectedColor(color)}
-                    />
-                    <span
-                      className="product-detail__color-box"
-                      style={{ backgroundColor: color }}
-                    />
-                  </label>
-                ))}
+            <div className="pd-price-row">
+              <div className="pd-price">
+                {product.price.toLocaleString()} تومان
               </div>
             </div>
-          )}
 
-          {/* ویژگی‌ها */}
-          {product.features && product.features.length > 0 && (
-            <div className="product-detail__features-section">
-              <p className="product-detail__features-title">ویژگی‌ها:</p>
-              <ul className="product-detail__features-list">
-                {product.features.map((feat, i) => (
-                  <li key={i}>{feat}</li>
-                ))}
-              </ul>
+            {/* رنگ انتخاب شده */}
+            {product.colors && product.colors.length > 0 && (
+              <div className="pd-color-section">
+                <div className="pd-color-selected">
+                  <span className="pd-color-selected__label">رنگ:</span>
+                  <span className="pd-color-selected__name">
+                    {colorName(selectedColor)}
+                  </span>
+                </div>
+
+                <div className="pd-colors">
+                  {product.colors.map((c) => (
+                    <label
+                      key={c}
+                      className={`pd-color-pill ${
+                        selectedColor === c ? "pd-color-pill--active" : ""
+                      }`}
+                      style={{
+                        borderColor:
+                          selectedColor === c
+                            ? "var(--color-primary)"
+                            : "var(--color-border)",
+                      }}
+                    >
+                      <input
+                        type="radio"
+                        name="pd-color"
+                        value={c}
+                        checked={selectedColor === c}
+                        onChange={() => setSelectedColor(c)}
+                      />
+                      <span
+                        className="pd-color-pill__swatch"
+                        style={{ backgroundColor: c }}
+                        aria-hidden
+                      />
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ویژگی‌ها */}
+            {product.features && product.features.length > 0 && (
+              <div className="pd-features">
+                <p className="pd-features__title">ویژگی‌ها</p>
+                <ul className="pd-features__list">
+                  {product.features.map((f, i) => (
+                    <li key={i} className="pd-features__item">
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* افزودن / کنترل تعداد (همان کنترلِ کارت) */}
+            <div className="pd-actions">
+              {!cartItem ? (
+                <motion.button
+                  onClick={handleAddToCart}
+                  className="pd-btn pd-btn--primary"
+                  whileTap={{ scale: 0.98 }}
+                >
+                  افزودن به سبد خرید
+                </motion.button>
+              ) : (
+                <div className="pd-quantity">
+                  <motion.button
+                    onClick={() =>
+                      handleDecreaseOrRemove(cartItem.id, cartItem.quantity)
+                    }
+                    className="pd-qty__btn pd-qty__btn--minus"
+                    whileTap={{ scale: 0.9 }}
+                    data-remove={cartItem.quantity === 1}
+                  >
+                    {cartItem.quantity === 1 ? "×" : "−"}
+                  </motion.button>
+
+                  <span className="pd-qty__value">{cartItem.quantity}</span>
+
+                  <motion.button
+                    onClick={() => handleIncrease()}
+                    className="pd-qty__btn pd-qty__btn--plus"
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    +
+                  </motion.button>
+                </div>
+              )}
             </div>
-          )}
-
-          {/* کنترل افزودن به کارت یا تعداد محصول */}
-          {!cartItem ? (
-            <motion.button
-              onClick={handleAddToCart}
-              className="product-detail__add-btn"
-              whileTap={{ scale: 0.95 }}
-            >
-              افزودن به سبد خرید
-            </motion.button>
-          ) : (
-            <div className="cart-item__quantity">
-              <motion.button
-                onClick={() =>
-                  handleDecreaseOrRemove(cartItem.id, cartItem.quantity)
-                }
-                className="cart-item__quantity-btn cart-item__quantity-btn--minus"
-                whileTap={{ scale: 0.9 }}
-              >
-                {cartItem.quantity === 1 ? "×" : "−"}
-              </motion.button>
-
-              <span className="cart-item__quantity-value">
-                {cartItem.quantity}
-              </span>
-
-              <motion.button
-                onClick={() => handleIncrease()}
-                className="cart-item__quantity-btn cart-item__quantity-btn--plus"
-                whileTap={{ scale: 0.9 }}
-              >
-                +
-              </motion.button>
-            </div>
-          )}
-        </motion.div>
+          </div>
+        </motion.aside>
       </motion.div>
     </div>
   );

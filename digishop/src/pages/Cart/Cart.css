@@ -1,14 +1,13 @@
-/* =============== Cart Page — Merged Legacy + Digikala Layers =============== */
+/* =============== Cart Page — Optimized & Mobile Stack =============== */
 .cart-page {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 5rem auto 0 auto;
   padding: var(--space-xl) 0 var(--space-xl) var(--space-md);
   min-height: 100vh;
-  margin-top: 5rem;
 }
 
-/* === لایه 1: عنوان === */
+/* === Header === */
 .cart-header {
   text-align: center;
   margin-bottom: var(--space-2xl);
@@ -27,28 +26,26 @@
   color: var(--color-text-light);
 }
 
-/* === لایه‌بندی اصلی === */
+/* === Layout === */
 .cart-layout {
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: var(--space-xl);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-md);
 }
 
-/* =============== Products List (Legacy + Enhanced) =============== */
+/* === Product List === */
 .cart-products {
-  display: flex;
-  flex-direction: column;
   gap: var(--space-lg);
   flex: 2;
   min-width: 0;
 }
 
+/* === Cart Item === */
 .cart-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-lg);
   padding: var(--space-lg);
@@ -57,74 +54,124 @@
   background: var(--color-bg-card);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-.cart-item:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-/* سمت چپ: اطلاعات */
-.cart-item__info {
-  flex: 1;
-  min-width: 0;
-  text-align: right;
-}
-
-.cart-item__name {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin: 0 0 var(--space-xs);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cart-item__price {
-  color: var(--color-primary);
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* سمت راست: عکس + کنترل‌ها */
+/* === Media & Controls === */
 .cart-item__media-controls {
+  width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
   flex-shrink: 0;
 }
 
 .cart-item__image-wrapper {
-  width: 90px;
-  height: 90px;
-  border-radius: var(--radius-md);
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  background: var(--color-bg);
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+  will-change: transform;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 
 .cart-item__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  display: block;
+  pointer-events: none;
 }
 
-.cart-item:hover .cart-item__image {
-  transform: scale(1.08);
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.cart-products .cart-item:last-of-type {
-  margin-bottom: 0;
+/* === Info Section === */
+.cart-item__info {
+  flex: 1;
+  min-width: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
-/* =============== Quantity Controls (Legacy Professional) =============== */
+.cart-item__name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+.cart-item__price {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* === Color Section === */
+.cart-item__color {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-xs);
+}
+
+.cart-item__color-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s ease;
+}
+
+.cart-item__color-swatch:hover {
+  transform: scale(1.2);
+}
+
+.cart-item__color-name {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+/* === Features List === */
+.cart-item__features-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--space-xs);
+}
+
+.cart-item__features-list li {
+  padding: 2px 6px;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+/* === Quantity Controls === */
 .cart-item__quantity {
   display: flex;
   align-items: center;
@@ -136,23 +183,6 @@
   margin-bottom: var(--space-sm);
 }
 
-.cart-item__quantity-btn,
-.cart-item__quantity-btn--plus {
-  outline: none;
-  border: none;
-  font-weight: bold;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  color: var(--color-secondary);
-}
-
-/* دکمه مشترک */
 .cart-item__quantity-btn {
   width: 22px;
   height: 22px;
@@ -163,33 +193,26 @@
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* دکمه کاهش (−) */
 .cart-item__quantity-btn--minus:hover {
   background: linear-gradient(135deg, var(--color-secondary), #c53030);
-  color: white;
   box-shadow: 0 2px 4px rgba(197, 48, 48, 0.3);
 }
 
-/* دکمه افزایش (+) */
 .cart-item__quantity-btn--plus:hover {
   background: linear-gradient(
     135deg,
     var(--color-primary),
     var(--color-primary-dark)
   );
-  color: white;
   box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
 }
 
-/* عدد وسط */
 .cart-item__quantity-value {
   min-width: 38px;
   text-align: center;
@@ -199,7 +222,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* =============== Sidebar (Legacy + Sticky) =============== */
+/* === Sidebar === */
 .cart-sidebar {
   flex: 1;
   min-width: 280px;
@@ -278,7 +301,7 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* =============== Empty Cart (Legacy Enhanced) =============== */
+/* === Empty Cart === */
 .cart-empty {
   grid-column: 1 / -1;
   text-align: center;
@@ -325,7 +348,7 @@
   transform: translateY(-1px);
 }
 
-/* =============== Responsive — Mobile: Sidebar Below =============== */
+/* === Responsive === */
 @media (max-width: 992px) {
   .cart-layout {
     display: flex;
@@ -336,7 +359,6 @@
   .cart-products {
     order: 1;
   }
-
   .cart-sidebar {
     order: 2;
     position: static;
@@ -344,25 +366,6 @@
   }
 }
 
-@media (min-width: 993px) {
-  .cart-layout {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-  }
-
-  .cart-products {
-    order: 1;
-  }
-
-  .cart-sidebar {
-    order: 2;
-    position: sticky;
-    top: 100px;
-    align-self: start;
-  }
-}
-
-/* =============== Mobile Adjustments =============== */
 @media (max-width: 767px) {
   .cart-header__title {
     font-size: 1.75rem;
@@ -374,17 +377,28 @@
   }
 
   .cart-item__media-controls {
-    order: -1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
   }
 
   .cart-item__image-wrapper {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .cart-item__info {
+    text-align: center;
+    margin-top: var(--space-sm);
   }
 
   .cart-item__quantity {
+    margin-top: var(--space-md);
     padding: 6px 10px;
     gap: 6px;
+    justify-content: center;
   }
 
   .cart-item__quantity-btn {
@@ -409,13 +423,8 @@
   }
 
   .cart-item__image-wrapper {
-    width: 70px;
-    height: 70px;
-  }
-
-  .cart-empty__link {
-    padding: var(--space-sm) var(--space-xl);
-    font-size: 1rem;
+    width: 100%;
+    height: 100%;
   }
 
   .cart-item__quantity-btn {
@@ -430,6 +439,11 @@
 
   .cart-item__quantity-value {
     min-width: 30px;
+    font-size: 1rem;
+  }
+
+  .cart-empty__link {
+    padding: var(--space-sm) var(--space-xl);
     font-size: 1rem;
   }
 }

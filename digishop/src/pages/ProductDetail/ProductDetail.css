@@ -1,172 +1,210 @@
-/* src/pages/ProductDetail.css */
-
+/* Page container */
 .product-detail-page {
-  margin-top: var(--space-2xl);
+  width: 100%;
+  margin-top: 5rem;
   padding: var(--space-2xl) 0;
 }
 
 .product-detail__content {
+  margin: 0 auto;
   display: flex;
+  width: 100%;
+  max-width: 930px;
+  justify-content: space-between;
+  align-items: center;
   gap: var(--space-2xl);
-  align-items: flex-start;
   flex-wrap: wrap;
 }
 
-/* سمت راست: تصویر محصول */
-.product-detail__image-section {
-  flex: 0 0 400px;
+/* ------------------- LEFT: purchase module (pd- prefix) ------------------- */
+.pd-purchase {
+  flex: 0 0 380px;
   max-width: 100%;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  padding: var(--space-md);
-  background: var(--color-bg-card);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.product-detail__image {
+.pd-card {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
 }
 
-/* سمت چپ: اطلاعات محصول */
-.product-detail__info-section {
-  flex: 1 1 350px;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.product-detail__title {
-  font-size: 2rem;
+.pd-title {
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-text);
+  margin-bottom: var(--space-sm);
 }
 
-.product-detail__category {
-  font-size: 1rem;
+.pd-category {
   color: var(--color-text-light);
+  margin-bottom: var(--space-sm);
 }
 
-.product-detail__price {
-  font-size: 1.5rem;
-  font-weight: 700;
+.pd-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-sm) 0 var(--space-md) 0;
+}
+
+.pd-price {
+  font-size: 1.4rem;
+  font-weight: 800;
   color: var(--color-secondary);
 }
 
-/* دکمه افزودن به سبد خرید */
-.product-detail__add-btn {
-  width: 70%;
-  all: unset;
-  padding: var(--space-sm) var(--space-md);
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: var(--radius-md);
-  background-color: var(--color-primary);
-  color: white;
-  text-align: center;
-  width: fit-content;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.product-detail__add-btn:hover {
-  box-shadow: var(--shadow-lg);
-}
-
-/* رنگ‌ها */
-.product-detail__color-section {
+/* Color section */
+.pd-color-section {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
-.product-detail__color-title {
-  font-weight: 600;
+.pd-color-selected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.pd-color-selected__label {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+.pd-color-selected__name {
+  font-size: 0.95rem;
   color: var(--color-text);
 }
 
-.product-detail__colors {
+/* color pills */
+.pd-colors {
   display: flex;
-  gap: var(--space-sm);
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.product-detail__color-label {
-  display: flex;
+.pd-color-pill {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
   border: 2px solid var(--color-border);
-  border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   position: relative;
-  transition: all 0.2s ease;
+  padding: 2px;
 }
 
-.product-detail__color-label input {
+.pd-color-pill input {
   display: none;
 }
 
-.product-detail__color-box {
+.pd-color-pill__swatch {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   display: block;
 }
 
-/* ویژگی‌ها */
-.product-detail__features-section {
-  margin-top: var(--space-md);
+/* active state */
+.pd-color-pill--active {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary);
 }
 
-.product-detail__features-title {
-  font-weight: 600;
+/* Features */
+.pd-features {
+  margin-bottom: var(--space-md);
+}
+
+.pd-features__title {
+  font-weight: 700;
   margin-bottom: var(--space-xs);
 }
 
-.product-detail__features-list {
-  list-style: disc;
-  padding-left: var(--space-lg);
+.pd-features__list {
+  list-style: none;
+  padding-left: 0;
   color: var(--color-text-light);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-/* کنترل تعداد محصول */
-.cart-item__quantity {
+.pd-features__item {
+  padding: 6px 8px;
+  font-size: 0.95rem;
+}
+
+/* Actions (add / quantity) */
+.pd-actions {
+  margin-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.pd-btn {
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  border: none;
+}
+
+.pd-btn--primary {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.pd-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* quantity UI */
+.pd-quantity {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: var(--space-xs) var(--radius-sm);
+  padding: 6px 8px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
-  margin-top: var(--space-md);
 }
 
-.cart-item__quantity-btn {
-  width: 28px;
-  height: 28px;
-  background-color: var(--color-primary-dark);
-  color: white;
-  border: none;
+.pd-qty__btn {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
+  background: var(--color-primary-dark);
+  color: white;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
 }
 
-.cart-item__quantity-btn--minus:hover {
+.pd-qty__btn--minus:hover {
   background: linear-gradient(135deg, var(--color-secondary), #c53030);
 }
-
-.cart-item__quantity-btn--plus:hover {
+.pd-qty__btn--plus:hover {
   background: linear-gradient(
     135deg,
     var(--color-primary),
@@ -174,15 +212,58 @@
   );
 }
 
-.cart-item__quantity-value {
-  min-width: 36px;
+.pd-qty__value {
+  min-width: 40px;
   text-align: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--color-text);
+  font-weight: 800;
+  font-size: 1rem;
 }
 
-/* محصول پیدا نشد */
+/* ------------------- RIGHT: image area (reused but pd- prefixed image classes kept) ------------------- */
+.product-detail__image-section {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pd-image-wrapper {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+  animation: pd-float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.pd-image-wrapper:hover {
+  animation-play-state: paused;
+}
+
+.pd-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* subtle float */
+@keyframes pd-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* not-found */
 .product-detail__not-found {
   text-align: center;
   font-size: 1.25rem;
@@ -190,24 +271,36 @@
   margin-top: var(--space-2xl);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ------------------- Responsive ------------------- */
+@media (max-width: 980px) {
   .product-detail__content {
     flex-direction: column;
-    align-items: center;
+    gap: var(--space-lg);
   }
-
-  .product-detail__info-section {
-    align-items: center;
-    text-align: center;
-  }
-
-  .product-detail__add-btn {
+  .pd-purchase {
     width: 100%;
-    max-width: 200px;
   }
+  .product-detail__image-section {
+    width: 100%;
+  }
+  .pd-image-wrapper {
+    height: 320px;
+    max-width: 520px;
+  }
+}
 
-  .cart-item__quantity {
-    justify-content: center;
+@media (max-width: 520px) {
+  .pd-image-wrapper {
+    height: 220px;
+    max-width: 360px;
+  }
+  .pd-qty__value {
+    min-width: 34px;
+  }
+  .pd-card {
+    padding: var(--space-md);
+  }
+  .pd-title {
+    font-size: 1.05rem;
   }
 }

@@ -7,9 +7,11 @@ interface CartItem {
   price: number;
   quantity: number;
   image: string;
-  color?: string; // اضافه شده
+  color?: string;
+  category?: string;
+  features?: string[];
+  localImageFile?: string;
 }
-
 interface CartState {
   items: CartItem[];
 }

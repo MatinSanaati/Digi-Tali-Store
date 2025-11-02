@@ -2,8 +2,9 @@
 export interface Product {
   id: number;
   name: string;
-  price: number; // به تومان
+  price: number;
   image: string;
+  localImageFile?: string;
   category:
     | "mobile"
     | "tablet"
@@ -14,8 +15,8 @@ export interface Product {
     | "smartwatch"
     | "computer_parts"
     | "digital_pen";
-  colors?: string[]; // اضافه شده
-  features?: string[]; // ویژگی‌ها
+  colors?: string[];
+  features?: string[];
 }
 
 export const mockProducts: Product[] = [
@@ -25,6 +26,7 @@ export const mockProducts: Product[] = [
     name: "آیفون 15 پرو",
     price: 45000000,
     image: "https://via.placeholder.com/150?text=iPhone+15+Pro",
+    localImageFile: "Apple-iPhone-15.jpg",
     category: "mobile",
     colors: ["#000000", "#ffffff", "#ff0000"],
     features: [
@@ -39,6 +41,7 @@ export const mockProducts: Product[] = [
     name: "سامسونگ گلکسی S24",
     price: 38000000,
     image: "https://via.placeholder.com/150?text=Galaxy+S24",
+    localImageFile: "سامسونگ گلکسی S24.webp",
     category: "mobile",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -53,6 +56,7 @@ export const mockProducts: Product[] = [
     name: "شیائومی 14 پرو",
     price: 32000000,
     image: "https://via.placeholder.com/150?text=Xiaomi+14+Pro",
+    localImageFile: "Xiaomi-14-Pro.jpg",
     category: "mobile",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -67,6 +71,7 @@ export const mockProducts: Product[] = [
     name: "هواوی P60 پرو",
     price: 35000000,
     image: "https://via.placeholder.com/150?text=Huawei+P60+Pro",
+    localImageFile: "هواوی P60 پرو.jpg",
     category: "mobile",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -81,6 +86,7 @@ export const mockProducts: Product[] = [
     name: "گوگل پیکسل 8",
     price: 30000000,
     image: "https://via.placeholder.com/150?text=Pixel+8",
+    localImageFile: "گوگل پیکسل 8.jpg",
     category: "mobile",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -97,6 +103,7 @@ export const mockProducts: Product[] = [
     name: "آیپد پرو 12.9 اینچ M2",
     price: 52000000,
     image: "https://via.placeholder.com/150?text=iPad+Pro+M2",
+    localImageFile: "آیپد پرو 12.9 اینچ M2.png",
     category: "tablet",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -111,6 +118,7 @@ export const mockProducts: Product[] = [
     name: "سامسونگ گلکسی تب S9",
     price: 35000000,
     image: "https://via.placeholder.com/150?text=Galaxy+Tab+S9",
+    localImageFile: "سامسونگ گلکسی تب S9.jpg",
     category: "tablet",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -125,6 +133,7 @@ export const mockProducts: Product[] = [
     name: "لنوو تب P11 پرو",
     price: 22000000,
     image: "https://via.placeholder.com/150?text=Lenovo+Tab+P11+Pro",
+    localImageFile: "لنوو تب P11 پرو.jpg",
     category: "tablet",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -139,6 +148,7 @@ export const mockProducts: Product[] = [
     name: "مایکروسافت سرفیس گو 3",
     price: 28000000,
     image: "https://via.placeholder.com/150?text=Surface+Go+3",
+    localImageFile: "مایکروسافت سرفیس گو 3.webp",
     category: "tablet",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -155,6 +165,7 @@ export const mockProducts: Product[] = [
     name: "کیف چرمی آیفون",
     price: 450000,
     image: "https://via.placeholder.com/150?text=Leather+Case",
+    localImageFile: "کیف چرمی آیفون.jpg",
     category: "accessory",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -169,6 +180,7 @@ export const mockProducts: Product[] = [
     name: "شارژر بی‌سیم 20 وات",
     price: 1200000,
     image: "https://via.placeholder.com/150?text=Wireless+Charger",
+    localImageFile: "شارژر بی‌سیم 20 وات.webp",
     category: "accessory",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -183,6 +195,7 @@ export const mockProducts: Product[] = [
     name: "کابل USB-C انکر",
     price: 350000,
     image: "https://via.placeholder.com/150?text=Anker+USB-C+Cable",
+    localImageFile: "کابل USB-C انکر.jpg",
     category: "accessory",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -197,6 +210,7 @@ export const mockProducts: Product[] = [
     name: "پاوربانک شیائومی 20000mAh",
     price: 1500000,
     image: "https://via.placeholder.com/150?text=Xiaomi+PowerBank",
+    localImageFile: "پاوربانک شیائومی 20000mAh.jpg",
     category: "accessory",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -213,6 +227,7 @@ export const mockProducts: Product[] = [
     name: "مک‌بوک ایر M2",
     price: 65000000,
     image: "https://via.placeholder.com/150?text=MacBook+Air+M2",
+    localImageFile: "مک‌بوک ایر M2.jpeg",
     category: "laptop",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -227,6 +242,7 @@ export const mockProducts: Product[] = [
     name: "مک‌بوک پرو 16 اینچ M2 مکس",
     price: 120000000,
     image: "https://via.placeholder.com/150?text=MacBook+Pro+M2+Max",
+    localImageFile: "مک‌بوک پرو 16 اینچ M2 مکس.jpeg",
     category: "laptop",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -241,6 +257,7 @@ export const mockProducts: Product[] = [
     name: "لنوو تینک‌پد X1 کربن",
     price: 48000000,
     image: "https://via.placeholder.com/150?text=ThinkPad+X1+Carbon",
+    localImageFile: "لنوو تینک‌پد X1 کربن.png",
     category: "laptop",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -255,6 +272,7 @@ export const mockProducts: Product[] = [
     name: "دل XPS 13",
     price: 55000000,
     image: "https://via.placeholder.com/150?text=Dell+XPS+13",
+    localImageFile: "دل XPS 13.jpg",
     category: "laptop",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -269,6 +287,7 @@ export const mockProducts: Product[] = [
     name: "ایسوس ROG زفیروس G14",
     price: 60000000,
     image: "https://via.placeholder.com/150?text=Asus+ROG+Zephyrus+G14",
+    localImageFile: "ایسوس ROG زفیروس G14.jpeg",
     category: "laptop",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -283,6 +302,7 @@ export const mockProducts: Product[] = [
     name: "اچ‌پی اسپکتر x360",
     price: 52000000,
     image: "https://via.placeholder.com/150?text=HP+Spectre+x360",
+    localImageFile: "اچ‌پی اسپکتر x360.jpg",
     category: "laptop",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -299,6 +319,7 @@ export const mockProducts: Product[] = [
     name: "ایرپادز پرو 2",
     price: 8500000,
     image: "https://via.placeholder.com/150?text=AirPods+Pro+2",
+    localImageFile: "ایرپادز پرو 2.webp",
     category: "headphone",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -313,6 +334,7 @@ export const mockProducts: Product[] = [
     name: "هدفون سونی WH-1000XM5",
     price: 15000000,
     image: "https://via.placeholder.com/150?text=Sony+WH-1000XM5",
+    localImageFile: "هدفون سونی WH-1000XM5.webp",
     category: "headphone",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -327,6 +349,7 @@ export const mockProducts: Product[] = [
     name: "بوز QuietComfort 45",
     price: 13500000,
     image: "https://via.placeholder.com/150?text=Bose+QC45",
+    localImageFile: "بوز QuietComfort 45.webp",
     category: "headphone",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -341,6 +364,7 @@ export const mockProducts: Product[] = [
     name: "جی‌بی‌ال Live 660NC",
     price: 6500000,
     image: "https://via.placeholder.com/150?text=JBL+Live+660NC",
+    localImageFile: "جی‌بی‌ال Live 660NC.jpg",
     category: "headphone",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -357,6 +381,7 @@ export const mockProducts: Product[] = [
     name: "مانیتور سامسونگ Odyssey G7 32 اینچ",
     price: 25000000,
     image: "https://via.placeholder.com/150?text=Samsung+Odyssey+G7",
+    localImageFile: "مانیتور سامسونگ Odyssey G7 32 اینچ.webp",
     category: "monitor",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -371,6 +396,7 @@ export const mockProducts: Product[] = [
     name: "مانیتور ال‌جی UltraGear 27 اینچ",
     price: 20000000,
     image: "https://via.placeholder.com/150?text=LG+UltraGear+27",
+    localImageFile: "مانیتور ال‌جی UltraGear 27 اینچ.webp",
     category: "monitor",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -385,6 +411,7 @@ export const mockProducts: Product[] = [
     name: "مانیتور دل UltraSharp 27 اینچ",
     price: 28000000,
     image: "https://via.placeholder.com/150?text=Dell+UltraSharp+27",
+    localImageFile: "مانیتور دل UltraSharp 27 اینچ.png",
     category: "monitor",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -399,6 +426,7 @@ export const mockProducts: Product[] = [
     name: "مانیتور ایسوس ProArt 32 اینچ",
     price: 32000000,
     image: "https://via.placeholder.com/150?text=Asus+ProArt+32",
+    localImageFile: "مانیتور ایسوس ProArt 32 اینچ.jpg",
     category: "monitor",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -415,6 +443,7 @@ export const mockProducts: Product[] = [
     name: "اپل واچ سری 9",
     price: 18000000,
     image: "https://via.placeholder.com/150?text=Apple+Watch+Series+9",
+    localImageFile: "اپل واچ سری 9.webp",
     category: "smartwatch",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -429,6 +458,7 @@ export const mockProducts: Product[] = [
     name: "سامسونگ گلکسی واچ 6",
     price: 12000000,
     image: "https://via.placeholder.com/150?text=Galaxy+Watch+6",
+    localImageFile: "سامسونگ گلکسی واچ 6.jpeg",
     category: "smartwatch",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -443,6 +473,7 @@ export const mockProducts: Product[] = [
     name: "هواوی واچ GT 4",
     price: 8500000,
     image: "https://via.placeholder.com/150?text=Huawei+Watch+GT+4",
+    localImageFile: "هواوی واچ GT 4.jpg",
     category: "smartwatch",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -457,6 +488,7 @@ export const mockProducts: Product[] = [
     name: "شیائومی واچ S1",
     price: 6000000,
     image: "https://via.placeholder.com/150?text=Xiaomi+Watch+S1",
+    localImageFile: "شیائومی واچ S1.jpg",
     category: "smartwatch",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -473,6 +505,7 @@ export const mockProducts: Product[] = [
     name: "ماوس لاجیتک MX Master 3S",
     price: 4500000,
     image: "https://via.placeholder.com/150?text=Logitech+MX+Master+3S",
+    localImageFile: "ماوس لاجیتک MX Master 3S.jpg",
     category: "computer_parts",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -487,6 +520,7 @@ export const mockProducts: Product[] = [
     name: "کیبورد مکانیکال کی‌کرون K8",
     price: 3500000,
     image: "https://via.placeholder.com/150?text=Keychron+K8",
+    localImageFile: "کیبورد مکانیکال کی‌کرون K8.jpg",
     category: "computer_parts",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -501,6 +535,7 @@ export const mockProducts: Product[] = [
     name: "فلش USB سندسک 128GB",
     price: 800000,
     image: "https://via.placeholder.com/150?text=SanDisk+128GB",
+    localImageFile: "فلش USB سندسک 128GB.jpg",
     category: "computer_parts",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -515,6 +550,7 @@ export const mockProducts: Product[] = [
     name: "هارد اکسترنال وسترن دیجیتال 2TB",
     price: 3500000,
     image: "https://via.placeholder.com/150?text=WD+2TB+External",
+    localImageFile: "هارد اکسترنال وسترن دیجیتال 2TB.jpg",
     category: "computer_parts",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -529,6 +565,7 @@ export const mockProducts: Product[] = [
     name: "رم کورسیر DDR4 16GB",
     price: 2500000,
     image: "https://via.placeholder.com/150?text=Corsair+16GB+RAM",
+    localImageFile: "رم کورسیر DDR4 16GB.webp",
     category: "computer_parts",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -543,6 +580,7 @@ export const mockProducts: Product[] = [
     name: "پردازنده اینتل Core i9-13900K",
     price: 22000000,
     image: "https://via.placeholder.com/150?text=Intel+i9-13900K",
+    localImageFile: "پردازنده اینتل Core i9-13900K.webp",
     category: "computer_parts",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -559,6 +597,7 @@ export const mockProducts: Product[] = [
     name: "اپل پنسل نسل 2",
     price: 5500000,
     image: "https://via.placeholder.com/150?text=Apple+Pencil+2",
+    localImageFile: "اپل پنسل نسل 2.webp",
     category: "digital_pen",
     colors: ["#000000", "#ffffff", "#ff0000"], // رنگ‌ها اضافه شدند
     features: [
@@ -573,6 +612,7 @@ export const mockProducts: Product[] = [
     name: "قلم دیجیتال سامسونگ S Pen Pro",
     price: 3500000,
     image: "https://via.placeholder.com/150?text=Samsung+S+Pen+Pro",
+    localImageFile: "قلم دیجیتال سامسونگ S Pen Pro.jpg",
     category: "digital_pen",
     colors: ["#000000", "#ffffff", "#ff0000"],
     features: [
@@ -584,9 +624,10 @@ export const mockProducts: Product[] = [
   },
   {
     id: 40,
-    name: "تبلت نوت‌برداری Remarkable 2",
+    name: "تبلت نوت‌برداری Remarkable 2.jpg",
     price: 20000000,
     image: "https://via.placeholder.com/150?text=Remarkable+2",
+    localImageFile: "سامسونگ گلکسی S24.webp",
     category: "digital_pen",
     colors: ["#000000", "#ffffff", "#ff0000"],
     features: [
@@ -601,6 +642,7 @@ export const mockProducts: Product[] = [
     name: "قرآن دیجیتال همراه قلم",
     price: 2500000,
     image: "https://via.placeholder.com/150?text=Digital+Quran+Pen",
+    localImageFile: "قرآن دیجیتال همراه قلم.jpg",
     category: "digital_pen",
     colors: ["#000000", "#ffffff", "#ff0000"],
     features: [

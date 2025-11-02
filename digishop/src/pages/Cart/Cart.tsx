@@ -8,6 +8,8 @@ import {
   decreaseQuantity,
 } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
+import ProductImage from "../../components/ProductImage/ProductImage";
+import { colorName } from "../../utils/colorName";
 
 export default function Cart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -41,7 +43,6 @@ export default function Cart() {
     0
   );
 
-  // === سبد خالی ===
   if (cartItems.length === 0) {
     return (
       <AnimatePresence mode="wait">
@@ -53,12 +54,10 @@ export default function Cart() {
           animate="visible"
           exit="hidden"
         >
-          {/* متن با key → فوراً وارد میشه */}
           <motion.h2 key="empty-title" variants={itemVariants}>
             سبد خرید شما خالی است
           </motion.h2>
 
-          {/* لینک با AnimatePresence داخلی */}
           <AnimatePresence>
             <motion.div
               key="return-link"
@@ -77,7 +76,7 @@ export default function Cart() {
       </AnimatePresence>
     );
   }
-  // === سبد پر ===
+
   return (
     <motion.div
       className="cart-page"
@@ -85,40 +84,36 @@ export default function Cart() {
       initial="hidden"
       animate="visible"
     >
-      {/* === لایه 1: عنوان === */}
       <motion.header className="cart-header" variants={itemVariants}>
         <h1 className="cart-header__title">سبد خرید</h1>
         <p className="cart-header__count">{cartItems.length} کالا</p>
       </motion.header>
 
       <div className="cart-layout">
-        {/* === لایه 2: محصولات === */}
         <motion.main className="cart-products" variants={containerVariants}>
           {cartItems.map((item, index) => (
             <motion.article
               key={item.id}
-              className="cart-item card"
+              className="cart-item"
               variants={itemVariants}
               custom={index}
               style={{ zIndex: cartItems.length - index }}
             >
               <div className="cart-item__media-controls">
-                <motion.div
-                  className="cart-item__image-wrapper"
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                  }}
-                >
-                  <img
+                <div className="cart-item__image-wrapper">
+                  <ProductImage
                     src={item.image}
+                    localFileName={item.localImageFile}
                     alt={item.name}
                     className="cart-item__image"
+                    size="large"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
                   />
-                </motion.div>
+                </div>
 
                 <div className="cart-item__quantity">
                   <motion.button
@@ -127,7 +122,6 @@ export default function Cart() {
                     }
                     className="cart-item__quantity-btn cart-item__quantity-btn--minus"
                     data-remove={item.quantity === 1}
-                    whileTap={{ scale: 0.9 }}
                   >
                     {item.quantity === 1 ? "×" : "−"}
                   </motion.button>
@@ -139,7 +133,6 @@ export default function Cart() {
                   <motion.button
                     onClick={() => handleIncrease(item.id)}
                     className="cart-item__quantity-btn cart-item__quantity-btn--plus"
-                    whileTap={{ scale: 0.9 }}
                   >
                     +
                   </motion.button>
@@ -148,6 +141,31 @@ export default function Cart() {
 
               <div className="cart-item__info">
                 <h3 className="cart-item__name">{item.name}</h3>
+                <p className="cart-item__category">
+                  دسته‌بندی: {item.category}
+                </p>
+
+                {item.color && (
+                  <div className="cart-item__color">
+                    <div
+                      className="cart-item__color-swatch"
+                      style={{ backgroundColor: item.color }}
+                      title={colorName(item.color)}
+                    />
+                    <span className="cart-item__color-name">
+                      {colorName(item.color)}
+                    </span>
+                  </div>
+                )}
+
+                {item.features && item.features.length > 0 && (
+                  <ul className="cart-item__features-list">
+                    {item.features.map((feat, i) => (
+                      <li key={i}>{feat}</li>
+                    ))}
+                  </ul>
+                )}
+
                 <p className="cart-item__price">
                   {item.price.toLocaleString()} تومان
                 </p>
@@ -156,7 +174,6 @@ export default function Cart() {
           ))}
         </motion.main>
 
-        {/* === لایه 3: سایدبار چسبنده === */}
         <motion.aside className="cart-sidebar" variants={itemVariants}>
           <h3 className="cart-sidebar__title">خلاصه سفارش</h3>
           <div className="cart-sidebar__details">
